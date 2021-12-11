@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate=~{admin/main-layout.html}>
+
+<head>
+
+</head>
+
+<body>
+
+
+    <div layout:fragment="content">
+        <div class="main-container">
+            <div class="pd-ltr-20 xs-pd-20-10">
+                <div class="page-header">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12">
+                            <div class="title">
+                                <h4>
+
+                                    Trả lời phản hồi
+
+                                </h4>
+                            </div>
+                            <nav aria-label="breadcrumb" role="navigation">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a th:href="@{/admin/index}">Trang chủ </a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">
+
+                                        <span>
+                                            Trả lời phản hồi
+                                        </span>
+                                    </li>
+                                </ol>
+                            </nav>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="card-box mb-30 p-5" style="min-height: 500px;">
+                    <div class="container mt-5 d-flex justify-content-center">
+                        <div class="row">
+                            <div class="col">
+                                <form th:action="@{/admin/feedbacks/reply}" method="post" th:object="${feedbackDto}"
+                                    class="shadow-lg rounded bg-light p-2" style="width: 700px;">
+                                    <h4 class="text-center text-primary">Nội dung</h4>
+                                    <div class="form-group">
+                                        <label for="to">Email:</label>
+                                        <input type="text" name="to" class="form-control" id="to"
+                                            readonly required="required" th:field="${feedbackDto.feedbackUser}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="subject">Chủ đề:</label>
+                                        <input type="text" name="subject" class="form-control" id="subject"
+                                            required="required">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Nội dung thư: </label>
+                                        <textarea class="form-control" name="content" required></textarea>
+                                    </div>
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-primary">
+
+                                            Gửi
+
+                                            </h4>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- js -->
+
+</body>
+
+</html>

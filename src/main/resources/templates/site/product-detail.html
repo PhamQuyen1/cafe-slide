@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate=~{site/layouts/main-layout.html}>
+
+
+<!-- index06:45-->
+
+<head>
+
+</head>
+
+<body id="home">
+
+    <div layout:fragment="content">
+        <div id="product-detail">
+            <div class="main-content">
+                <div id="wrapper-site">
+                    <div id="content-wrapper">
+                        <div id="main">
+                            <div class="page-home">
+
+                                <!-- breadcrumb -->
+                                <nav class="breadcrumb-bg">
+                                    <div class="container no-index">
+                                        <div class="breadcrumb">
+                                            <ol>
+                                                <li>
+                                                    <a th:href="@{/site/home}">
+                                                        <span>Trang chủ</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <span>Sản phẩm</span>
+                                                    </a>
+                                                </li>
+
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </nav>
+                                <div class="container">
+                                    <div class="content">
+                                        <div class="row">
+                                            <div class="sidebar-3 sidebar-collection col-lg-3 col-md-4 col-sm-4">
+
+                                                <!-- category menu -->
+                                                <div class="sidebar-block">
+                                                    <div class="title-block">Danh mục</div>
+                                                    <div class="block-content">
+                                                        <div class="cateTitle hasSubCategory open level1"
+                                                            th:each="category : ${categories}">
+
+
+                                                            <a class="cateItem"
+                                                                th:href="@{'/site/products/category/' + ${category.categoryId}}"
+                                                                th:text="${category.categoryName}"></a>
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="sidebar-block">
+                                                    <div class="title-block">
+                                                        Bán nhiều nhất
+                                                    </div>
+                                                    <div class="product-content tab-content">
+                                                        <div class="row">
+                                                            <div class="item col-md-12"
+                                                                th:each="productsBestSeller : ${listProductsBestSeller}">
+                                                                <div
+                                                                    class="product-miniature item-one first-item d-flex">
+                                                                    <div class="thumbnail-container border">
+                                                                        <a
+                                                                            th:href="@{'/site/products/productDetail/' + ${productsBestSeller.productId}}">
+                                                                            <img class="img-fluid image-cover"
+                                                                                th:src="@{${productsBestSeller.imageUrl}}"
+                                                                                alt="img">
+                                                                            <img class="img-fluid image-secondary"
+                                                                                th:src="@{${productsBestSeller.imageUrl}}"
+                                                                                alt="img">
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="product-description">
+                                                                        <div class="product-groups">
+                                                                            <div class="product-title ">
+                                                                                <a th:href="@{'/site/products/productDetail/' + ${productsBestSeller.productId}}"
+                                                                                    style="color: #625620 !important;font-size: 15px;font-weight: 500;"
+                                                                                    th:text="${productsBestSeller.productName}">Đồng
+                                                                                    hồ</a>
+                                                                            </div>
+
+                                                                            <div class="rating">
+                                                                                &nbsp
+                                                                                <span class="price"
+                                                                                    th:if="${productsBestSeller.unitPrice > productsBestSeller.price}">
+                                                                                    <p><del
+                                                                                            
+                                                                                            th:text="${#numbers.formatDecimal(productsBestSeller.unitPrice, 3, 'POINT',2,'COMMA')}"></del>
+                                                                                     đ</p>
+                                                                                </span>
+                                                                                <span class="price"
+                                                                                    th:unless="${productsBestSeller.unitPrice > productsBestSeller.price}"
+                                                                                    th:text="${'&nbsp'}"></span>
+
+                                                                            </div>
+                                                                            <div class="product-group-price">
+                                                                                <div class="product-price-and-shipping">
+                                                                                    <span class="price"
+                                                                                        
+                                                                                        th:text="${#numbers.formatDecimal(productsBestSeller.price, 3, 'POINT',2,'COMMA')}">1.000.000
+                                                                                        đ</span> đ
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                            <div class="col-sm-8 col-lg-9 col-md-9" th:object="${productDto}">
+                                                <div class="main-product-detail">
+                                                    <h2 th:text="*{productName}">Đồng hồ treo tường</h2>
+                                                    <div class="product-single row">
+                                                        <div class="product-detail col-xs-12 col-md-5 col-sm-5">
+                                                            <div class="page-content" id="content">
+                                                                <div class="images-container">
+                                                                    <div class="js-qv-mask mask tab-content border">
+                                                                        <div id="item1"
+                                                                            class="tab-pane fade active in show">
+                                                                            <img th:src="@{*{imageUrl}}" alt="img">
+                                                                        </div>
+                                                                        <div id="item2" class="tab-pane fade">
+                                                                            <img src="img/product/1.jpg" alt="img">
+                                                                        </div>
+                                                                        <div id="item3" class="tab-pane fade">
+                                                                            <img src="img/product/1.jpg" alt="img">
+                                                                        </div>
+                                                                        <div id="item4" class="tab-pane fade">
+                                                                            <img src="img/product/1.jpg" alt="img">
+                                                                        </div>
+                                                                        <!-- <div class="layer hidden-sm-down" data-toggle="modal" data-target="#product-modal">
+                                                                            <i class="fa fa-expand"></i>
+                                                                        </div> -->
+                                                                    </div>
+                                                                    <!-- <ul class="product-tab nav nav-tabs d-flex">
+                                                                        <li class="active col">
+                                                                            <a href="#item1" data-toggle="tab" aria-expanded="true" class="active show">
+                                                                                <img src="img/product/1.jpg" alt="img">
+                                                                            </a>
+                                                                        </li>
+                                                                        <li class="col">
+                                                                            <a href="#item2" data-toggle="tab">
+                                                                                <img src="img/product/2.jpg" alt="img">
+                                                                            </a>
+                                                                        </li>
+                                                                        <li class="col">
+                                                                            <a href="#item3" data-toggle="tab">
+                                                                                <img src="img/product/3.jpg" alt="img">
+                                                                            </a>
+                                                                        </li>
+                                                                        <li class="col">
+                                                                            <a href="#item4" data-toggle="tab">
+                                                                                <img src="img/product/4.jpg" alt="img">
+                                                                            </a>
+                                                                        </li>
+                                                                    </ul> -->
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="product-info col-xs-12 col-md-7 col-sm-7">
+                                                            <div class="detail-description">
+                                                                <div class="price-del has-border">
+                                                                    <span class="price"
+                                                                        
+                                                                        th:text="${#numbers.formatDecimal(productDto.price, 3, 'POINT',2,'COMMA')}">150.000.000</span> đ
+                                                                    <span class="float-right">
+                                                                        <span class="availb">Tồn kho: </span>
+                                                                        <span class="check" th:text="*{quantity}">
+                                                                        </span>
+                                                                    </span>
+                                                                </div>
+                                                                <!-- <p class="description">Proin gravida nibh vel velit auctor aliquet. Aenean lorem quis bibendum
+                                                                    auctor, nisi elit consequat etiam non auctor.</p> -->
+
+                                                                <div class="has-border cart-area">
+                                                                    <div class="product-quantity">
+                                                                        <div class="qty">
+                                                                            <div class="input-group">
+                                                                                <form th:action="@{/site/shoppingCart/addToCart}" method="post" class="formAddToCart" id="my_form">
+                                                                                    
+                                                                                
+                                                                                <div class="quantity">
+                                                                                    <span class="control-label">Số lượng
+                                                                                        : </span>
+                                                                                    
+                                                                                    <style>
+                                                                                        input::-webkit-outer-spin-button,
+                                                                                        input::-webkit-inner-spin-button {
+                                                                                            -webkit-appearance: none;
+                                                                                        }
+                                                                                    </style>
+                                                                                    
+                                                                                        <input type="number" step="1"
+                                                                                        max="10" value="1" min="1"
+                                                                                        name="quantity"
+                                                                                        class="quantity-field input-group form-control">
+                                                                                        <input type="hidden" name="productId" th:value="*{productId}">    
+                                                                                    <span
+                                                                                        class="input-group-btn-vertical">
+                                                                                        
+                                                                                        <input type="button" value="+"
+                                                                                            class="button-plus btn btn-touchspin js-touchspin bootstrap-touchspin-up"
+                                                                                            data-field="quantity">
+                                                                                        <input type="button" value="-"
+                                                                                            class="button-minus btn btn-touchspin js-touchspin bootstrap-touchspin-down"
+                                                                                            data-field="quantity">
+                                                                                        
+                                                                                    </span>
+                                                                                </div>
+                                                                                <span class="add">
+                                                                                    <!-- <button
+                                                                                        class="btn btn-primary add-to-cart add-item"
+                                                                                        data-button-action="add-to-cart"
+                                                                                        type="submit">
+                                                                                        <i class="fa fa-shopping-cart"
+                                                                                            aria-hidden="true"></i>
+                                                                                        <span>Add to cart</span>
+                                                                                    </button> -->
+                                                                                    <button type="submit" class="btn btn-primary add-to-cart add-item" data-button-action="add-to-cart"><i class="fa fa-shopping-cart"
+                                                                                        aria-hidden="true"></i><span>Add to cart</span></button>
+                                                                                    <!-- <a class="addToWishlist" href="#">
+                                                                                        <i class="fa fa-heart" aria-hidden="true"></i>
+                                                                                    </a> -->
+                                                                                </span>
+                                                                            </form>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="clearfix"></div>
+                                                                    <p class="product-minimal-quantity">
+                                                                    </p>
+                                                                </div>
+                                                                <!-- <div class="d-flex2 has-border">
+                                                                    <div class="btn-group">
+                                                                        <a href="#">
+                                                                            <i class="zmdi zmdi-share"></i>
+                                                                            <span>Share</span>
+                                                                        </a>
+                                                                        <a href="#" class="email">
+                                                                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                                                                            <span>SEN TO A FRIEND</span>
+                                                                        </a>
+                                                                        <a href="#" class="print">
+                                                                            <i class="zmdi zmdi-print"></i>
+                                                                            <span>Print</span>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="rating-comment has-border d-flex">
+                                                                    <div class="review-description d-flex">
+                                                                        <span>REVIEW :</span>
+                                                                        <div class="rating">
+                                                                            <div class="star-content">
+                                                                                <div class="star"></div>
+                                                                                <div class="star"></div>
+                                                                                <div class="star"></div>
+                                                                                <div class="star"></div>
+                                                                                <div class="star"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="read after-has-border">
+                                                                        <a href="#review">
+                                                                            <i class="fa fa-commenting-o color" aria-hidden="true"></i>
+                                                                            <span>READ REVIEWS (3)</span>
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="apen after-has-border">
+                                                                        <a href="#review">
+                                                                            <i class="fa fa-pencil color" aria-hidden="true"></i>
+                                                                            <span>WRITE A REVIEW</span>
+                                                                        </a>
+                                                                    </div>
+                                                                </div> -->
+                                                                <div class="content has-border">
+                                                                    <p>Mã sản phẩm :
+                                                                        <span class="content2" th:text="*{productId}">
+                                                                            <!-- <a th:href="@{'/site/products/productDetail/' + ${product.productId}}" th:text="*{category.categoryId}">e-02154</a> -->
+                                                                        </span>
+                                                                    </p>
+                                                                    <p>Danh mục :
+                                                                        <span class="content2"
+                                                                            th:text="*{categoryName}">
+
+
+                                                                        </span>
+                                                                    </p>
+                                                                    <p>
+                                                                        <span>
+                                                                            Hotline tư vấn 0964-021-941 phục vụ từ 8AM
+                                                                            đến 10PM mỗi ngày
+                                                                        </span>
+                                                                    </p>
+                                                                </div>
+                                                                <div class="has-border">
+                                                                    Furnitica - Trên 5 năm bán hàng với hơn 5000+ sản
+                                                                    phẩm nội thất gỗ và đồ trang trí nhà... Giao hàng
+                                                                    Toàn Quốc
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="review">
+                                                        <ul class="nav nav-tabs">
+                                                            <li class="active">
+                                                                <a data-toggle="tab" href="#description"
+                                                                    class="active show">Description</a>
+                                                            </li>
+
+                                                        </ul>
+
+                                                        <div class="tab-content">
+                                                            <div id="description" class="tab-pane fade in active show">
+                                                                <p th:text="*{description}">
+                                                                </p>
+
+                                                            </div>
+
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="related">
+                                                        <div class="title-tab-content  text-center">
+                                                            <div class="title-product justify-content-start">
+                                                                <h2>Sản phẩm liên quan</h2>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tab-content">
+                                                            <div class="row">
+                                                                <div class="item text-center col-md-4"
+                                                                    th:each="product : ${relatedProductsDto}">
+                                                                    <div
+                                                                        class="product-miniature js-product-miniature item-one first-item">
+                                                                        <div class="thumbnail-container border">
+                                                                            <a
+                                                                                th:href="@{'/site/products/productDetail/' + ${product.productId}}">
+                                                                                <img class="img-fluid image-cover"
+                                                                                    th:src="@{${product.imageUrl}}"
+                                                                                    alt="img">
+                                                                                <img class="img-fluid image-secondary"
+                                                                                    th:src="@{${product.imageUrl}}"
+                                                                                    alt="img">
+                                                                            </a>
+                                                                            <div class="highlighted-informations">
+                                                                                <!-- <div class="variant-links">
+                                                                                    <a href="#" class="color beige" title="Beige"></a>
+                                                                                    <a href="#" class="color orange" title="Orange"></a>
+                                                                                    <a href="#" class="color green" title="Green"></a>
+                                                                                </div> -->
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="product-description">
+                                                                            <div class="product-groups">
+                                                                                <div class="product-title">
+                                                                                    <a th:href="@{'/site/products/productDetail/' + ${product.productId}}"
+                                                                                        th:text="${product.productName}">Đồng
+                                                                                        hồ treo tường</a>
+                                                                                </div>
+                                                                                <div class="rating">
+
+                                                                                    <span class="price"
+                                                                                        th:if="${product.unitPrice > product.price}">
+                                                                                        <p><del
+                                                                                                
+                                                                                                th:text="${#numbers.formatDecimal(product.unitPrice, 3, 'POINT',2,'COMMA')}"></del>
+                                                                                         đ</p>
+                                                                                    </span>
+                                                                                    <span class="price"
+                                                                                        th:unless="${product.unitPrice > product.price}"
+                                                                                        th:text="${'&nbsp'}"></span>
+                                                                                </div>
+                                                                                <div class="product-group-price">
+                                                                                    <div
+                                                                                        class="product-price-and-shipping">
+                                                                                        <span class="price"
+                                                                                            
+                                                                                            th:text="${#numbers.formatDecimal(product.price, 3, 'POINT',2,'COMMA')}">£28.08</span> đ
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div
+                                                                                class="product-buttons d-flex justify-content-center">
+
+                                                                                <form
+                                                                                    th:action="@{/site/shoppingCart/addToCart}"
+                                                                                    method="post" class="formAddToCart"
+                                                                                    id="my_form">
+                                                                                    <input type="hidden" name="quantity"
+                                                                                        value="1">
+                                                                                    <input type="hidden"
+                                                                                        name="productId"
+                                                                                        th:value="${product.productId}">
+                                                                                    <!-- <a class="add-to-cart" href="#" onclick="document.getElementById('my_form').submit();" 
+                                                                                        data-button-action="add-to-cart">
+                                                                                        <i class="fa fa-shopping-cart"
+                                                                                            aria-hidden="true"></i>
+                                                                                    </a> -->
+
+
+                                                                                    <button type="submit"
+                                                                                        class="add-to-cart"><i
+                                                                                            class="fa fa-shopping-cart"
+                                                                                            aria-hidden="true"></i></button>
+                                                                                </form>
+                                                                                <a th:href="@{'/site/products/productDetail/' + ${product.productId}}"
+                                                                                    class="quick-view hidden-sm-down"
+                                                                                    data-link-action="quickview">
+                                                                                    <i class="fa fa-eye"
+                                                                                        aria-hidden="true"></i>
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

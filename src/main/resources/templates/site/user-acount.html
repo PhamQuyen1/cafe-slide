@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate=~{site/layouts/main-layout.html}>
+<head>
+</head>
+
+<body id="home">
+    <div layout:fragment="content">
+        <div class="user-acount">
+            <div class="main-content">
+                <div class="wrap-banner">
+        
+                    <!-- breadcrumb -->
+                    <nav class="breadcrumb-bg">
+                        <div class="container no-index">
+                            <div class="breadcrumb">
+                                <ol>
+                                    <li>
+                                        <a th:href="@{/site/home}">
+                                            <span>Trang chủ</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <span>Tài khoản của tôi</span>
+                                        </a>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </nav>
+        
+                    <div class="acount head-acount">
+                        <div class="container">
+                            <div id="main">
+                                <h1 class="title-page">Tài khoản của tôi</h1>
+                                <h6 style="max-width: 300px;
+                                            margin: 0 auto;
+                                            color: red;
+                                            background-color: #e3e0da;
+                                            padding: 8px 10px; text-align: center;" class="text-center-success"
+                                                th:if="${message}" th:text="${message}">
+                                            </h6>
+                                <div class="content" id="block-history">
+                                    <table class="std table">
+                                        <tbody>
+                                            <tr>
+                                                <th class="first_item">Tên :</th>
+                                                <td th:text="${userDto.fullname}">David James</td>
+                                            </tr>
+                                            <tr>
+                                                <th class="first_item">Ngày sinh:</th>
+                                                <td  th:text="${#dates.format(userDto.birthday, 'dd-MM-yyyy')}">quyenb1809505@student.ctu.edu.vn</td>
+                                            </tr>
+                                            <tr>
+                                                <th class="first_item">Địa chỉ :</th>
+                                                <td th:text="${userDto.address}">123 canberra Street, New York, USA</td>
+                                            </tr>
+                                            
+                                            
+                                            <tr>
+                                                <th class="first_item">Số điện thoại :</th>
+                                                <td th:text="${userDto.phone}">0123456789</td>
+                                            </tr>
+                                            <tr>
+                                                <th class="first_item">Email:</th>
+                                                <td th:text="${userDto.email}">quyenb1809505@student.ctu.edu.vn</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+        
+                                </div>
+                                <div>
+                                    <a th:href="@{/site/users/resetPassword}" class="form-control-submit btn btn-primary">
+                                        Đổi mật khẩu
+                                    </a>
+                                    <a th:href="@{/site/users/update}" class="form-control-submit btn btn-primary">
+                                        Cập nhập thông tin
+                                    </a>
+                                </div>
+                                <!-- <div class="order">
+                                    <h4>Order
+                                        <span class="detail">History</span>
+                                    </h4>
+                                    <!-- <p>You haven't placed any orders yet.</p>
+                                    
+                                    
+                                </div> -->
+                            </div>
+        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="product-cart checkout-cart blog">
+            <div class="main-content" id="cart">
+                <!-- main -->
+                <div id="wrapper-site">
+                <!-- breadcrumb -->
+                    
+                    <div class="container">
+                        <div class="row">
+                            <div id="content-wrapper" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 onecol">
+                                <section id="main" class="mt-0">
+                                    <div class="cart-grid row">
+                                        <div class="col-md-9 col-xs-12 check-info">
+                                            <h1 class="title-page">Đơn hàng đã mua</h1>
+                                            <p th:if="${orderSize == 0}">Bạn chưa đặt đơn hàng nào.</p>
+                                            <div id="block-history" class="block-center">
+                                                <table class="std table" th:unless="${orderSize == 0}">
+                                                    <thead class="thead-dark">
+                                                        <tr>
+                                                            <th class="first_item">Ngày đặt hàng</th>
+                                                            <th class="item mywishlist_first">Địa chỉ giao hàng</th>
+                                                            <th class="item mywishlist_first">Tình trạng</th>
+                                                            <th class="item mywishlist_second">Tổng tiền</th>
+                                                            <th class="item mywishlist_second">Xem chi tiết</th>
+                                                            
+                                                        </tr>
+                                                    </thead> 
+                                                    <tbody>
+                                                        <th:block th:each="order : ${orders}">
+                                                            <tr id="wishlist_1" >
+                                                                <td th:text="${order.orderDate}">
+                                                                    2020-01-01
+                                                                </td>
+                                                                <td class="bold align_center" th:text="${order.orderAddress}">
+                                                                    Cần thơ Viet Nam
+                                                                </td>
+                                                                <td th:text="${order.orderStatus}">Đã giao</td>
+                                                                <td ><span
+                                                                    th:text="${#numbers.formatDecimal(order.total, 3, 'POINT',2,'COMMA')}">
+
+                                                                </span> đ</td>
+                                                                <td>
+                                                                    <a class="text-success" data-toggle="collapse" style="cursor: pointer;" th:attr="data-target=|#${order.orderId}|" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                                                        + Xem chi tiết
+                                                                    </a>
+                                                                    
+                                                                </td>
+                                                                
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="5" class="collapse" th:id="${order.orderId}">
+                                                                    <div >
+                                                        
+                                                                        <div class="cart-container card card-body">
+                                                                            <div class="cart-overview js-cart">
+                                                                                <ul class="cart-items">
+                                                                                    <li class="cart-item" th:each="cartItem: ${order.items}">
+                                                                                        <div class="product-line-grid row justify-content-between">
+                                                                                            <!--  product left content: image-->
+                                                                                            <div class="product-line-grid-left col-md-2">
+                                                                                                <span class="product-image media-middle">
+                                                                                                    <a th:href="@{'/site/products/productDetail/' + ${cartItem.product.productId}}">
+                                                                                                        <img class="img-fluid"
+                                                                                                            th:src="@{${cartItem.product.imageUrl}}"
+                                                                                                            alt="Organic Strawberry Fruits">
+                                                                                                    </a>
+                                                                                                </span>
+                                                                                            </div>
+                                                                                            <div class="product-line-grid-body col-md-5">
+                                                                                                <div class="product-line-info">
+                                                                                                    <a class="label" th:href="@{'/site/products/productDetail/' + ${cartItem.product.productId}}"
+                                                                                                        data-id_customization="0"
+                                                                                                        th:text="${cartItem.product.productName}">Organic
+                                                                                                        Strawberry Fruits</a>
+                                                                                                </div>
+                                                                                                <div class="product-line-info product-price">
+                                                                                                    <span class="value"
+                                                                                                        
+                                                                                                        th:text="${#numbers.formatDecimal(cartItem.price, 3, 'POINT',2,'COMMA')}">£20.00</span> đ
+                                                                                                </div>
+                            
+                                                                                            </div>
+                                                                                            <div
+                                                                                                class="product-line-grid-right text-center product-line-actions col-md-5">
+                                                                                                <div class="row">
+                                                                                                    
+                                                                                                    <div class="col-md-4 col qty input-group">
+                                                                                                        <div class="label">Số lượng:</div>
+                                                                                                        <div class="quantity">
+                                                                                                            <div style="margin-top: -20px;
+                                                                                                                        margin-left: -25px;" 
+                                                                                                                        th:text="${cartItem.quantity}">
+                                                                                                            </div>
+                                                                                                       </div> 
+                                                                                                </div>
+                                                                                                   <div class="col-md-6 col price">
+                                                                                                        <div class="label">Tiền:</div>
+                                                                                                        <div class="product-price total"
+                                                                                                            
+                                                                                                            >
+                                                                                                           <span th:text="${#numbers.formatDecimal(cartItem.price * cartItem.quantity, 3, 'POINT',2,'COMMA')}"></span> đ
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div
+                                                                                                        class="col-md-2 col text-xs-right align-self-end">
+                                                                                                        <div class="cart-line-product-actions ">
+                                                                                                            
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </li>
+                                                                                    
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </th:block>
+                                                        
+                                                        
+                                                    </tbody>
+                                                </table>
+                                                
+                                                
+                                            </div>
+                                            
+                                        </div>
+                                        
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+
+
+<!-- index06:45-->
+</html>

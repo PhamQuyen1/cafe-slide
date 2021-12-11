@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate=~{admin/main-layout.html}>
+
+<head>
+
+</head>
+
+<body>
+	<div layout:fragment="content">
+		<div class="main-container">
+			<div class="pd-ltr-20 xs-pd-20-10">
+				<div class="page-header">
+					<div class="row">
+						<div class="col-md-6 col-sm-12">
+							<div class="title">
+								<h4>
+									<span th:if="${update}">
+										Cập nhập thông tin sản phẩm
+									</span>
+									<span th:unless= "${update}" >
+										Thêm sản phẩm
+									</span>
+								</h4>
+							</div>
+							<nav aria-label="breadcrumb" role="navigation">
+								<ol class="breadcrumb">
+									<li class="breadcrumb-item"><a th:href="@{/admin/home}">Trang chủ </a></li>
+									<li class="breadcrumb-item active" aria-current="page">
+										<span th:if="${update}">
+											Cập nhập thông tin sản phẩm
+										</span>
+										<span th:unless= "${update}" >
+											Thêm sản phẩm
+										</span>
+									</li>
+								</ol>
+							</nav>
+						</div>
+
+					</div>
+				</div>
+
+				<div class="card-box mb-30 p-5" style="min-height: 500px;">
+					<div class="container mt-5 d-flex justify-content-center">
+						<div class="row">
+							<div class="col">
+								<form th:action="@{/admin/products/saveOrUpdate}" method="post"
+									th:object="${productDto}" class="shadow-lg rounded bg-light p-2"
+									style="width: 700px;" enctype="multipart/form-data">
+									<h4 class="text-center text-primary">Thông tin sản phẩm</h4>
+									<div class="form-row">
+										<div class="form-group col">
+											<label for="name">Tên sản phẩm:</label>
+											<input type="text" th:field="*{productName}" class="form-control" id="name"
+												required="">
+										</div>
+										<div class="form-group col">
+											<label for="danhmuc">Loại sản phẩm: </label>
+											<select id="action" class="custom-select" th:field="*{categoryName}">
+												<option th:each="category : ${categories}"
+													th:text="${category.categoryName}"
+													th:value="${category.categoryName}"
+													th:selected="${category.categoryName == categoryName}">
+												</option>
+
+											</select>
+										</div>
+									</div>
+
+
+									<div class="form-row">
+										<div class="form-group col">
+											<label for="price">Giá:</label>
+											<input type="number" th:field="*{unitPrice}" class="form-control" id="price"
+												required="">
+											<input type="hidden" th:field="*{productId}" class="form-control" id="price"
+												required="">
+										</div>
+										<div class="form-group col">
+											<label for="quanlity">Số lượng:</label>
+											<input type="number" th:field="*{quantity}" class="form-control"
+												id="quanlity" required="" min="1">
+										</div>
+									</div>
+									<div class="form-row">
+										<div class="form-group col">
+											<label for="size">Kích thước(Dài x Rộng x Cao):</label>
+											<input type="text" th:field="*{size}" class="form-control" id="size"
+												required="">
+										</div>
+										<div class="form-group col">
+											<label for="startDay">Ngày bắt đầu:</label>
+											<input class="form-control" placeholder="Chọn ngày"
+												id="startDay" type="date" th:field="*{enteredDate}">
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="mb-3">
+											<label for="description">Mô tả:</label>
+											<textarea class="form-control " th:field="*{description}"
+												id="description"></textarea>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label>Hình ảnh</label>
+										<input type="file" name="fileImage" accept="image/png, image/jpeg" id="file"
+											onchange="showPreviewOne(event)"
+											class="form-control-file form-control height-auto">
+										<p>
+											<img th:src="@{*{imageUrl}}" id="thumnail" alt="Hình sản phẩm" style="width: 500px;">
+											
+										</p>
+									</div>
+									<div class="text-center">
+										<button type="submit" class="btn btn-primary">
+											<h4 class="text-light">Đồng ý</h4>
+										</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	
+</body>
+
+</html>

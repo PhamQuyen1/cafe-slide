@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate=~{site/layouts/main-layout.html}>
+
+<head>
+</head>
+
+<body>
+
+    <div layout:fragment="content">
+        
+        <div class="main-content" id="home4">
+            <div class="wrap-banner">
+                <div class="section banner">
+                    <div class="tiva-slideshow-wrapper">
+                        <div id="tiva-slideshow" class="nivoSlider">
+                            <a href="#">
+                                <img class="img-responsive" th:src="@{/site/img/home/slider-4.jpg}"
+                                    title="#caption1" alt="Slideshow image">
+                            </a>
+                            <a href="#">
+                                <img class="img-responsive" th:src="@{/site/img/home/slider-5.jpg}"
+                                    title="#caption2" alt="Slideshow image">
+                            </a>
+                            <a href="#">
+                                <img class="img-responsive" th:src="@{/site/img/home/slider-6.jpg}"
+                                    title="#caption3" alt="Slideshow image">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- main -->
+
+        </div>
+        <div id="home4">
+            <div class="main-content">
+                <div class="wrap-banner">
+                    <!-- category menu  -->
+                    <!-- <div class="container">
+                        <div class="menu-banner-container">
+                            <div id="show-menu" class="menu-banner d-xs-none dropdown-menu collapse">
+                                <div class="tiva-verticalmenu block">
+                                    <div class="verticalmenu" role="navigation">
+                                        <ul class="menu level1">
+                                            <li class="item parent">
+                                                <a href="#" class="hasicon" title="SIDE TABLE">
+                                                    <img th:src="@{/site/img/home/table-lamp.png}" alt="img">SIDE TABLE</a>
+                                                <div class="dropdown-menu">
+                                                    <div class="menu-items">
+                                                        <ul>
+                                                            <li class="item">
+                                                                <a href="#" title="Aliquam lobortis">Aliquam
+                                                                    lobortis</a>
+                                                            </li>
+                                                            <li class="item parent-submenu parent">
+                                                                <a href="#" title="Duis Reprehenderit">Duis
+                                                                    Reprehenderit</a>
+                                                                <span class="show-sub fa-active-sub"></span>
+                                                                <div class="dropdown-submenu">
+                                                                    <div class="menu-items">
+                                                                        <ul>
+                                                                            <li class="item">
+                                                                                <a href="#"
+                                                                                    title="Aliquam lobortis">Aliquam
+                                                                                    lobortis</a>
+                                                                            </li>
+                                                                            <li class="item">
+                                                                                <a href="#"
+                                                                                    title="Duis Reprehenderit">Duis
+                                                                                    Reprehenderit</a>
+                                                                            </li>
+                                                                            <li class="item">
+                                                                                <a href="#"
+                                                                                    title="Voluptate">Voluptate</a>
+                                                                            </li>
+                                                                            <li class="item">
+                                                                                <a href="#" title="Tongue Est">Tongue
+                                                                                    Est</a>
+                                                                            </li>
+                                                                            <li class="item">
+                                                                                <a href="#"
+                                                                                    title="Venison Andouille">Venison
+                                                                                    Andouille</a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li class="item">
+                                                                <a href="#" title="Voluptate">Voluptate</a>
+                                                            </li>
+                                                            <li class="item">
+                                                                <a href="#" title="Tongue Est">Tongue Est</a>
+                                                            </li>
+                                                            <li class="item">
+                                                                <a href="#" title="Venison Andouille">Venison
+                                                                    Andouille</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="item parent group">
+                                                <a href="#" class="hasicon" title="FI">
+                                                    <img th:src="@{site/img/home/fireplace.png}" alt="img">FIREPLACE
+                                                </a>
+                                                <div class="dropdown-menu menu-2">
+                                                    <div class="menu-items">
+                                                        <div class="item">
+                                                            <div class="menu-content">
+                                                                <div class="tags">
+                                                                    <div class="title float-left">
+                                                                        <b>DINNING ROOM</b>
+                                                                    </div>
+                                                                    <ul class="list-inline">
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Toshiba</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Samsung</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">LG</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Sharp</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Electrolux</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Hitachi</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Panasonic</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Mitsubishi Electric</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Daikin</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Haier</a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                                <div class="tags">
+                                                                    <div class="title float-left">
+                                                                        <b>BATHROOM</b>
+                                                                    </div>
+                                                                    <ul class="list-inline">
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Toshiba</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Samsung</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">LG</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Sharp</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Electrolux</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Hitachi</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Panasonic</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Mitsubishi Electric</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Daikin</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Haier Media</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Gee</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Digimart</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Vitivaa</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Sanaky</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Sunshine</a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                                <div class="tags">
+                                                                    <div class="title float-left">
+                                                                        <b>LIVING ROOM</b>
+                                                                    </div>
+                                                                    <ul class="list-inline">
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Media</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Gee</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Digimart</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Vitivaa</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Sanaky</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Sunshine</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Toshiba</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Samsung</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">LG</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Sharp</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Electrolux</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Hitachi</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Panasonic</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Mitsubishi Electric</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Daikin</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Haier</a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                                <div class="tags">
+                                                                    <div class="title float-left">
+                                                                        <b>BEDROOM</b>
+                                                                    </div>
+                                                                    <ul class="list-inline">
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">LG</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Sharp</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Electrolux</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Hitachi</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Panasonic</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Mitsubishi Electric</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Daikin</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Haier</a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                                <div class="tags">
+                                                                    <div class="title float-left">
+                                                                        <b>KITCHEN</b>
+                                                                    </div>
+                                                                    <ul class="list-inline">
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">LG</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Sharp</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Electrolux</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Hitachi</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Panasonic</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Mitsubishi Electric</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Daikin</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Haier</a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                                <div class="tags">
+                                                                    <div class="title float-left">
+                                                                        <b>Blender</b>
+                                                                    </div>
+                                                                    <ul class="list-inline">
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">LG</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Sharp</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Electrolux</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Hitachi</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Panasonic</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Mitsubishi Electric</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Daikin</a>
+                                                                        </li>
+                                                                        <li class="list-inline-item">
+                                                                            <a href="#">Haier</a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="item group-category-img parent group">
+                                                <a href="#" class="hasicon" title="TABLE LAMP">
+                                                    <img th:src="@{site/img/home/table-lamp.png}" alt="img">TABLE LAMP
+                                                </a>
+                                                <div class="dropdown-menu menu-3">
+                                                    <div class="menu-items">
+                                                        <div class="item">
+                                                            <div class="menu-content">
+                                                                <div class="row group-category">
+                                                                    <div class="mt-20">
+                                                                        <div class="d-flex">
+                                                                            <div class="col">
+                                                                                <span class="menu-title">Coventry
+                                                                                    dining</span>
+                                                                                <ul>
+                                                                                    <li>
+                                                                                        <a href="#">Accessories</a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a href="#">Activewear</a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a href="#">ASOS Basic Tops</a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a href="#">Bags &amp;
+                                                                                            Purses</a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a href="#">Beauty</a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a href="#">Coats &amp;
+                                                                                            Jackets</a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a href="#">Curve &amp; Plus
+                                                                                            Size</a>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>
+                                                                            <div class="col">
+                                                                                <span class="menu-title">Amara
+                                                                                    stools</span>
+                                                                                <ul>
+                                                                                    <li>
+                                                                                        <a href="#">Accessories</a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a href="#">Activewear</a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a href="#">ASOS Basic Tops</a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a href="#">Bags &amp;
+                                                                                            Purses</a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a href="#">Beauty</a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a href="#">Coats &amp;
+                                                                                            Jackets</a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a href="#">Curve &amp; Plus
+                                                                                            Size</a>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="d-flex">
+                                                                            <div class="col">
+                                                                                <span class="menu-title">Kingston
+                                                                                    dining</span>
+                                                                                <ul>
+                                                                                    <li>
+                                                                                        <a href="#">Accessories</a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a href="#">Activewear</a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a href="#">ASOS Basic Tops</a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a href="#">Bags &amp;
+                                                                                            Purses</a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a href="#">Beauty</a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a href="#">Coats &amp;
+                                                                                            Jackets</a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a href="#">Curve &amp; Plus
+                                                                                            Size</a>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>
+                                                                            <div class="col">
+                                                                                <span class="menu-title">Ellinger
+                                                                                    dining</span>
+                                                                                <ul>
+                                                                                    <li>
+                                                                                        <a href="#">Accessories</a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a href="#">Activewear</a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a href="#">ASOS Basic Tops</a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a href="#">Bags &amp;
+                                                                                            Purses</a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a href="#">Beauty</a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a href="#">Coats &amp;
+                                                                                            Jackets</a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a href="#">Curve &amp; Plus
+                                                                                            Size</a>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="ml-15">
+                                                                        <a href="#">
+                                                                            <img class="img-fluid"
+                                                                                src="site/img/home/img-menu.jpg"
+                                                                                alt="img">
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="item">
+                                                <a href="#" class="hasicon" title="OTTOMAN">
+                                                    <img src="site/img/home/ottoman.png" alt="img">OTTOMAN
+                                                </a>
+                                            </li>
+                                            <li class="item">
+                                                <a href="#" class="hasicon" title="ARMCHAIR">
+                                                    <img src="site/img/home/armchair.png" alt="img">ARMCHAIR
+                                                </a>
+                                            </li>
+                                            <li class="item">
+                                                <a href="#" class="hasicon" title="CUSHION">
+                                                    <img src="site/img/home/cushion.png" alt="img">CUSHION
+                                                </a>
+                                            </li>
+                                            <li class="item">
+                                                <a href="#" class="hasicon" title="COFFEE TABLE">
+                                                    <img src="site/img/home/coffee_table.png" alt="img">COFFEE TABLE</a>
+                                            </li>
+                                            <li class="item">
+                                                <a href="#" class="hasicon" title="SHELF">
+                                                    <img src="site/img/home/shelf.png" alt="img">SHELF
+                                                </a>
+                                            </li>
+                                            <li class="item">
+                                                <a href="#" class="hasicon" title="SOFA">
+                                                    <img src="site/img/home/sofa.png" alt="img">SOFA
+                                                </a>
+                                            </li>
+                                            <li class="item">
+                                                <a href="#" class="hasicon" title="DRESSING TABLE">
+                                                    <img src="site/img/home/dressing.png" alt="img">DRESSING TABLE</a>
+                                            </li>
+                                            <li class="item">
+                                                <a href="#" class="hasicon" title="WINDOWN CURTAIN">
+                                                    <img src="site/img/home/windown.png" alt="img">WINDOWN CURTAIN</a>
+                                            </li>
+                                            <li class="item toggleable menu-hidden">
+                                                <a href="#" class="hasicon" title="CHANDELIER">
+                                                    <img src="site/img/home/chandelier.png" alt="img">CHANDELIER
+                                                </a>
+                                            </li>
+                                            <li class="item toggleable menu-hidden">
+                                                <a href="#" class="hasicon" title="CEILING FAN">
+                                                    <img src="site/img/home/ceiling_fan.png" alt="img">CEILING FAN</a>
+                                            </li>
+                                            <li class="item toggleable menu-hidden">
+                                                <a href="#" class="hasicon" title="WARDROBE">
+                                                    <img src="site/img/home/wardrobe.png" alt="img">WARDROBE
+                                                </a>
+                                            </li>
+                                            <li class="item toggleable menu-hidden">
+                                                <a href="#" class="hasicon" title="FLOOR LAMP">
+                                                    <img src="site/img/home/floor_lamp.png" alt="img">FLOOR LAMP</a>
+                                            </li>
+                                            <li class="item toggleable menu-hidden">
+                                                <a href="#" class="hasicon" title="VASE-FLOWER">
+                                                    <img src="site/img/home/vase-flower.png" alt="img">VASE-FLOWER
+                                                </a>
+                                            </li>
+                                            <li class="item toggleable menu-hidden">
+                                                <a href="#" class="hasicon" title="BED">
+                                                    <img src="site/img/home/bed.png" alt="img">BED
+                                                </a>
+                                            </li>
+                                            <li class="item toggleable menu-hidden">
+                                                <a href="#" class="hasicon" title="BED GIRL">
+                                                    <img src="site/img/home/bed.png" alt="img">BED GIRL</a>
+                                            </li>
+                                            <li class="item toggleable menu-hidden">
+                                                <a href="#" class="hasicon" title="BED BOY">
+                                                    <img src="site/img/home/bed.png" alt="img">BED BOY</a>
+                                            </li>
+                                            <li class="more item">Show More</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="wrap-banner">
+                        <!-- menu category -->
+                        <div class="container position">
+                            
+                        </div>
+                       
+                    </div>
+
+                    <div class="container">
+
+                        <div class="row">
+                            <div class="policy-home col-lg-12">
+                                <div class="row">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- main -->
+
+                    <div id="wrapper-site">
+                        <div id="content-wrapper" class="full-width">
+                            <div id="main">
+                                <section class="page-home">
+                                    <!-- FEATURED CATEGORIES -->
+                                    <!-- <div class="featured-category">
+                                        <div class="container">
+                                            <div class="tab-content text-center">
+                                                <div class="title-product">
+                                                    <h2>DANH SÁCH SẢN PHẨM</h2>
+    
+                                                </div>
+                                                <div class="featured owl-carousel owl-theme">
+                                                    <div class="content-category">
+                                                        <div class="content-img">
+                                                            <a href="product-grid-sidebar-left.html">
+                                                                <img class="img-fluid" src="site/img/product/27.jpg"
+                                                                    alt="Side Table" title="Side Table">
+                                                            </a>
+                                                        </div>
+                                                        <div class="info-category">
+                                                            <h3>
+                                                                <a href="product-grid-sidebar-left.html">Side Table</a>
+                                                            </h3>
+                                                            <p>Discover 120 Products </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="content-category">
+                                                        <div class="content-img">
+                                                            <a href="product-grid-sidebar-left.html">
+                                                                <img class="img-fluid" src="site/img/product/28.jpg"
+                                                                    alt="Side Table" title="Side Table">
+                                                            </a>
+                                                        </div>
+                                                        <div class="info-category">
+                                                            <h3>
+                                                                <a href="product-grid-sidebar-left.html">Arm Chair</a>
+                                                            </h3>
+                                                            <p>Discover 35 Products </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="content-category">
+                                                        <div class="content-img">
+                                                            <a href="product-grid-sidebar-left.html">
+                                                                <img class="img-fluid" src="site/img/product/29.jpg"
+                                                                    alt="Side Table" title="Side Table">
+                                                            </a>
+                                                        </div>
+                                                        <div class="info-category">
+                                                            <h3>
+                                                                <a href="product-grid-sidebar-left.html">Dinner Table</a>
+                                                            </h3>
+                                                            <p>Discover 127 Products </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="content-category">
+                                                        <div class="content-img">
+                                                            <a href="product-grid-sidebar-left.html">
+                                                                <img class="img-fluid" src="site/img/product/30.jpg"
+                                                                    alt="Side Table" title="Side Table">
+                                                            </a>
+                                                        </div>
+                                                        <div class="info-category">
+                                                            <h3>
+                                                                <a href="product-grid-sidebar-left.html">Pillow</a>
+                                                            </h3>
+                                                            <p>Discover 130 Products </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="content-category">
+                                                        <div class="content-img">
+                                                            <a href="product-grid-sidebar-left.html">
+                                                                <img class="img-fluid" src="site/img/product/31.jpg"
+                                                                    alt="Side Table" title="Side Table">
+                                                            </a>
+                                                        </div>
+                                                        <div class="info-category">
+                                                            <h3>
+                                                                <a href="product-grid-sidebar-left.html">Wall Clock</a>
+                                                            </h3>
+                                                            <p>Discover 47 Products </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="content-category">
+                                                        <div class="content-img">
+                                                            <a href="product-grid-sidebar-left.html">
+                                                                <img class="img-fluid" src="img/product/32.jpg"
+                                                                    alt="Side Table" title="Side Table">
+                                                            </a>
+                                                        </div>
+                                                        <div class="info-category">
+                                                            <h3>
+                                                                <a href="product-grid-sidebar-left.html">Lamp</a>
+                                                            </h3>
+                                                            <p>Discover 20 Products </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="content-category">
+                                                        <div class="content-img">
+                                                            <a href="product-grid-sidebar-left.html">
+                                                                <img class="img-fluid" src="img/product/33.jpg"
+                                                                    alt="Side Table" title="Side Table">
+                                                            </a>
+                                                        </div>
+                                                        <div class="info-category">
+                                                            <h3>
+                                                                <a href="product-grid-sidebar-left.html">Soffa</a>
+                                                            </h3>
+                                                            <p>Discover 12 Products </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> -->
+    
+                                    <!-- banner -->
+    
+                                    <div class="section spacing-10 group-image-special">
+                                        <div class="row">
+                                            
+                                            <div class="col-lg-6 col-md-6 banner1">
+                                                <div class="effect">
+                                                    <a href="#">
+                                                        <img class="img-fluid width-100" th:src="@{/site/img/home/Blog3.jpg}"
+                                                            alt="banner-2" title="banner-2">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 banner1">
+                                                <div class="effect">
+                                                    <a href="#">
+                                                        <img class="img-fluid width-100" th:src="@{/site/img/home/Blog9.jpg}"
+                                                            alt="banner-2" title="banner-2">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--FEATURED PRODUCTS -->
+                                    
+                                    
+                                    <div class="featured-product">
+                                        <div class="container">
+                                            <div class="title-tab-content  text-center">
+                                                <div class="title-product justify-content-between">
+                                                    <h2>SẢN PHẨM Khuyến mãi</h2>
+                                                    <p>Đây là những sản phẩm khuyến mãi mới nhất của chúng tôi</p>
+                                                </div>
+                                            </div>
+                                            <div class="tab-content">
+                                                <div class="item text-center col-20" th:each="product : ${listProductDiscount}">
+                                                    <div class="product-miniature js-product-miniature item-one first-item">
+                                                        <div class="thumbnail-container">
+                                                            <a th:href="@{'/site/products/productDetail/' + ${product.productId}}">
+                                                                <img class="img-fluid image-cover"
+                                                                    th:src="@{${product.imageUrl}}" alt="img">
+                                                                <img class="img-fluid image-secondary"
+                                                                    th:src="@{${product.imageUrl}}" alt="img">
+                                                            </a>
+                                                            <!-- <div class="highlighted-informations">
+                                                                <div class="variant-links">
+                                                                    <a href="#" class="color beige" title="Beige"></a>
+                                                                    <a href="#" class="color orange" title="Orange"></a>
+                                                                    <a href="#" class="color green" title="Green"></a>
+                                                                </div>
+                                                            </div> -->
+                                                        </div>
+                                                        <div class="product-description">
+                                                            <div class="product-groups">
+                                                                <div class="product-title">
+                                                                    <a th:href="@{'/site/products/productDetail/' + ${product.productId}}" th:text="${product.productName}">Đồng hồ</a>
+                                                                </div>
+                                                                <div class="rating">
+                                                                    &nbsp
+                                                                    <div class="product-price-and-shipping">
+                                                                        <span class="price" th:if="${product.unitPrice > product.price}"><p><del th:text="${#numbers.formatDecimal(product.unitPrice, 3, 'POINT',2,'COMMA')}"> </del> đ</p></span>
+                                                                        <span class="price" th:unless="${product.unitPrice > product.price}" th:text="${'&nbsp'}"></span>
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                                <div class="product-group-price">
+                                                                    <div class="product-price-and-shipping">
+                                                                        <span class="price" th:text="${#numbers.formatDecimal(product.price, 3, 'POINT',2,'COMMA')}" ></span> đ
+                                                                    </div>
+                                                                </div>
+                                                                <!-- ${#numbers.formatCurrency(product.price)} -->
+                                                            </div>
+                                                            <div class="product-buttons d-flex justify-content-center">
+                                                                <form th:action="@{/site/shoppingCart/addToCart}" method="post" class="formAddToCart" id="my_form">
+                                                                    <input type="hidden" name="quantity" value="1">
+                                                                    <input type="hidden" name="productId" th:value="${product.productId}">
+                                                                    <!-- <a class="add-to-cart" href="#" onclick="document.getElementById('my_form').submit();" 
+                                                                        data-button-action="add-to-cart">
+                                                                        <i class="fa fa-shopping-cart"
+                                                                            aria-hidden="true"></i>
+                                                                    </a> -->
+                                                                    
+                                                                    
+                                                                    <button type="submit" class="add-to-cart"><i class="fa fa-shopping-cart"
+                                                                        aria-hidden="true"></i></button>
+                                                                </form>
+                                                                <!-- <a class="addToWishlist" href="#" data-rel="1" onclick="">
+                                                                    <i class="fa fa-heart" aria-hidden="true"></i>
+                                                                </a> -->
+                                                                <a th:href="@{'/site/products/productDetail/' + ${product.productId}}" class="quick-view hidden-sm-down"
+                                                                    data-link-action="quickview">
+                                                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                           
+                                            <!-- <div class="content-showmore text-center has-showmore">
+                                                
+                                                <a class="btn btn-default novShowMore" href="./product-grid-sidebar-right.html"><span>Tất cả sản phẩm khuyến mãi</span></a>
+                                                
+                                                <input type="hidden" value="0" class="count_showmore">
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="featured-product">
+                                        <!-- <hr> -->
+                                        <div class="container">
+                                            <div class="title-tab-content  text-center">
+                                                <div class="title-product justify-content-between">
+                                                    <h2>SẢN PHẨM MỚI NHẤT</h2>
+                                                    <p>Đây là những sản phẩm mới nhất của chúng tôi</p>
+                                                </div>
+                                            </div>
+                                            <div class="tab-content">
+                                                <div class="item text-center col-20" th:each="product : ${listProduct}">
+                                                    <div class="product-miniature js-product-miniature item-one first-item">
+                                                        <div class="thumbnail-container">
+                                                            <a th:href="@{'/site/products/productDetail/' + ${product.productId}}">
+                                                                <img class="img-fluid image-cover"
+                                                                    th:src="@{${product.imageUrl}}" alt="img">
+                                                                <img class="img-fluid image-secondary"
+                                                                    th:src="@{${product.imageUrl}}" alt="img">
+                                                            </a>
+                                                            <!-- <div class="highlighted-informations">
+                                                                <div class="variant-links">
+                                                                    <a href="#" class="color beige" title="Beige"></a>
+                                                                    <a href="#" class="color orange" title="Orange"></a>
+                                                                    <a href="#" class="color green" title="Green"></a>
+                                                                </div>
+                                                            </div> -->
+                                                        </div>
+                                                        <div class="product-description">
+                                                            <div class="product-groups">
+                                                                <div class="product-title text-success">
+                                                                    <a th:href="@{'/site/products/productDetail/' + ${product.productId}}" th:text="${product.productName}">Đồng hồ</a>
+                                                                </div>
+                                                                <div class="rating">
+                                                                    &nbsp
+                                                                    <div class="product-price-and-shipping">
+                                                                        <span class="price" th:if="${product.unitPrice > product.price}"><p><del th:text="${#numbers.formatDecimal(product.unitPrice, 3, 'POINT',2,'COMMA')}"></del> đ</p></span>
+                                                                        <span class="price" th:unless="${product.unitPrice > product.price}" th:text="${'&nbsp'}"></span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="product-group-price">
+                                                                    <div class="product-price-and-shipping">
+                                                                        <span class="price" th:text="${#numbers.formatDecimal(product.price, 3, 'POINT',2,'COMMA')}" >Â£28.08</span> đ
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="product-buttons d-flex justify-content-center">
+                                                                <!-- <form action="#" method="post" class="formAddToCart">
+                                                                    <input type="hidden" name="id_product" value="1">
+                                                                    <a class="add-to-cart" href="#"
+                                                                        data-button-action="add-to-cart">
+                                                                        <i class="fa fa-shopping-cart"
+                                                                            aria-hidden="true"></i>
+                                                                    </a>
+                                                                </form> -->
+                                                                <form th:action="@{/site/shoppingCart/addToCart}" method="post" class="formAddToCart" id="my_form">
+                                                                    <input type="hidden" name="quantity" value="1">
+                                                                    <input type="hidden" name="productId" th:value="${product.productId}">
+                                                                    <!-- <a class="add-to-cart" href="#" onclick="document.getElementById('my_form').submit();" 
+                                                                        data-button-action="add-to-cart">
+                                                                        <i class="fa fa-shopping-cart"
+                                                                            aria-hidden="true"></i>
+                                                                    </a> -->
+                                                                    
+                                                                    
+                                                                    <button type="submit" class="add-to-cart"><i class="fa fa-shopping-cart"
+                                                                        aria-hidden="true"></i></button>
+                                                                </form>
+                                                                <!-- <a class="addToWishlist" href="#" data-rel="1" onclick="">
+                                                                    <i class="fa fa-heart" aria-hidden="true"></i>
+                                                                </a> -->
+                                                                <a th:href="@{'/site/products/productDetail/' + ${product.productId}}" class="quick-view hidden-sm-down"
+                                                                    data-link-action="quickview" >
+                                                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                           
+                                            <div class="content-showmore text-center has-showmore">
+                                                <!-- <button type="button" class="btn btn-default novShowMore" name="novShowMore" data-loading="Loading..." data-loadmore="Load More Products">
+                                                    <span><a href="./product-grid-sidebar-right.html">Tất cả sản phẩm</a></span>
+                                                    <a class="btn btn-default novShowMore" href="./product-grid-sidebar-right.html"><span>Tất cả sản phẩm</span></a>
+                                                </button> -->
+                                                <a class="btn btn-default novShowMore" th:href="@{/site/products}" style="margin-right: 570px;"><span>Tất cả sản phẩm</span></a>
+                                                <input type="hidden" value="0" class="count_showmore">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+
+                
+            </div>
+        </div>
+    </div>
+
+</body>
+
+
+
+
+</html>

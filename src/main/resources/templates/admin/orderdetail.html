@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate=~{admin/main-layout.html}>
+
+<head>
+</head>
+
+<body>
+	<div layout:fragment="content">
+		<div class="main-container">
+			<div class="pd-ltr-20 xs-pd-20-10">
+				<div class="page-header">
+					<div class="row">
+						<div class="col-md-6 col-sm-12">
+							<div class="title">
+								<h4>Chi tiết đơn hàng</h4>
+							</div>
+							<nav aria-label="breadcrumb" role="navigation">
+								<ol class="breadcrumb">
+									<li class="breadcrumb-item"><a href="index.html">Trang chủ </a></li>
+									<li class="breadcrumb-item active" aria-current="page">Chi tiết đơn hàng</li>
+								</ol>
+							</nav>
+						</div>
+
+					</div>
+				</div>
+				<div class="invoice-wrap">
+					<div class="invoice-box">
+						<div class="invoice-header">
+							<div class="logo text-center">
+								<img src="vendors/images/deskapp-logo.png" alt="">
+							</div>
+						</div>
+						<h4 class="text-center mb-30 weight-600 text-success">Chi tiết đơn hàng</h4>
+						<div class="row pb-30">
+							<div class="col-md-6">
+								<span>Tên khách hàng: </span>
+								<h5 class="mb-15" th:text="${orderDto.orderUser}"></h5>
+
+								<p class="font-14 mb-5">Địa Chỉ: <strong class="weight-600"
+										th:text="${orderDto.orderAddress}">2829 Trainer Avenue Peoria, IL 61602
+										9</strong></p>
+								<p class="font-14 mb-5">Mã đơn hàng: <strong class="weight-600"
+										th:text="${orderDto.orderId}">4556</strong></p>
+							</div>
+							<div class="col-md-6">
+								<div class="text-right">
+									<p class="font-14 mb-5">Ngày đặt hàng: <strong class="weight-600"
+											th:text="${#dates.format(orderDto.orderDate, 'yyyy-MM-dd')}">15/10/2021</strong>
+									</p>
+
+
+								</div>
+							</div>
+
+						</div>
+
+						<div class="invoice-desc pb-30">
+							<table class=" table stripe hover nowrap">
+								<thead>
+									<tr>
+
+
+										<th class="table-plus datatable-nosort">Sản phẩm</th>
+										<th>Tên sản phẩm</th>
+
+
+
+										<th>Số lượng</th>
+										<th>Giá bán</th>
+										<th class="text-danger">Thành tiền</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="item : ${listItemDto}">
+
+										<td class="table-plus"><img th:src="@{${item.product.imageUrl}}" width="70"
+												height="70" alt=""></td>
+										<td th:text="*{item.product.productName}">Đồng hồ</td>
+										<td th:text="*{item.quantity}">2</td>
+										<td ><span th:text="${#numbers.formatDecimal(item.price, 3, 'POINT',2,'COMMA')}"></span> đ</td>
+										<td ><span th:text="${#numbers.formatDecimal(item.price * item.quantity, 3, 'POINT',2,'COMMA')}"></span> đ</td>
+
+									</tr>
+
+								</tbody>
+
+							</table>
+							<div class="col-11 text-right m-3">Phí vận chuyển:
+								<span style="font-size: 20px;" class="text-success">
+									50.000,00 đ
+									</span>
+								VNĐ
+
+							</div>
+
+							<div class="col-11 text-right m-3">Tổng tiền:
+								<span style="font-size: 20px;" class="text-success" 
+								th:text="${#numbers.formatDecimal(orderDto.total, 3, 'POINT',2,'COMMA')}">
+									15000000
+									VNĐ</span> đ
+								VNĐ
+
+							</div>
+							<hr>
+							<div>
+								<form th:action="@{'/admin/orders/orderDetail/update/' +${orderDto.orderId}}" method="POST" th:object="${orderDto}">
+
+									<div class="form-row">
+										<div class="form-group col">
+
+											<div class="form-group row">
+												<label class="col-sm-12 col-md-4 col-form-label text-success"> <strong
+														style="font-size: large;">Tình trạng:</strong> </label>
+												<div class="col-sm-12 col-md-8">
+													<select class="custom-select col-12" name="status">
+														<!-- <option th:selected="*{orderStatus=='Đặt hàng'}"
+															value="Đặt hàng">Đặt hàng
+														</option> -->
+														<option th:selected="*{orderStatus=='Đã duyệt'}"
+															value="Đã duyệt">Đã duyệt</option>
+														<option th:selected="*{orderStatus=='Đang vận chuyển'}"
+															value="Đang vận chuyển">
+															Đang vận chuyển</option>
+														<option th:selected="*{orderStatus=='Đã giao'}" value="Đã giao">
+															Đã giao</option>
+														<option th:selected="*{orderStatus=='Không duyệt'}"
+															value="Không duyệt">Không duyệt</option>
+													</select>
+												</div>
+											</div>
+										</div>
+										<div class="form-group col">
+											<div class="text-center">
+												<button class=" btn btn-primary" type="submit">Cập nhập</button>
+											</div>
+
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+
+</body>
+
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate=~{site/layouts/main-layout.html}>
+
+
+<!-- index06:45-->
+
+<head>
+
+</head>
+
+<body id="home">
+    <div layout:fragment="content">
+        <div class="product-cart checkout-cart blog">
+            <div class="main-content" id="cart">
+                <!-- main -->
+                <div id="wrapper-site">
+                    <!-- breadcrumb -->
+                    <nav class="breadcrumb-bg">
+                        <div class="container no-index">
+                            <div class="breadcrumb">
+                                <ol>
+                                    <li>
+                                        <a href="#">
+                                            <span>Trang chủ</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <span>Giỏ hàng</span>
+                                        </a>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </nav>
+                    <div class="container">
+                        <div class="row">
+                            <div id="content-wrapper" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 onecol">
+                                <section id="main">
+                                    <div class="cart-grid row">
+                                        <div class="col-md-9 col-xs-12 check-info">
+                                            <h1 class="title-page">Giỏ hàng</h1>
+                                            <h6 style="max-width: 300px;
+                                            margin: 0 auto;
+                                            color: red;
+                                            background-color: #e3e0da;
+                                            padding: 8px 10px; text-align: center;" class="text-center-success"
+                                                th:if="${message}" th:text="${message}">
+                                            </h6>
+                                            <div class="cart-container">
+                                                <div class="cart-overview js-cart">
+                                                    <ul class="cart-items">
+                                                        <li class="cart-item" th:each="cartItem: ${cartItems}">
+                                                            <div class="product-line-grid row justify-content-between">
+                                                                <!--  product left content: image-->
+                                                                <div class="product-line-grid-left col-md-2">
+                                                                    <span class="product-image media-middle">
+                                                                        <a th:href="@{'/site/products/productDetail/' + ${cartItem.product.productId}}">
+                                                                            <img class="img-fluid"
+                                                                                th:src="@{${cartItem.product.imageUrl}}"
+                                                                                alt="Organic Strawberry Fruits">
+                                                                        </a>
+                                                                    </span>
+                                                                </div>
+                                                                <div class="product-line-grid-body col-md-5">
+                                                                    <div class="product-line-info">
+                                                                        <a class="label" th:href="@{'/site/products/productDetail/' + ${cartItem.product.productId}}"
+                                                                            data-id_customization="0"
+                                                                            th:text="${cartItem.product.productName}">Organic
+                                                                            Strawberry Fruits</a>
+                                                                    </div>
+                                                                    <div class="product-line-info product-price">
+                                                                        <span class="value"
+                                                                            
+                                                                            th:text="${#numbers.formatDecimal(cartItem.price, 3, 'POINT',2,'COMMA')}">£20.00</span> đ
+                                                                    </div>
+
+                                                                </div>
+                                                                <div
+                                                                    class="product-line-grid-right text-center product-line-actions col-md-5">
+                                                                    <div class="row">
+                                                                        
+                                                                        <div class="col-md-4 col qty input-group">
+                                                                            <div class="label">Số lượng:</div>
+                                                                            <div class="quantity">
+                                                                                <style>
+                                                                                    input::-webkit-outer-spin-button,
+                                                                                    input::-webkit-inner-spin-button {
+                                                                                        -webkit-appearance: none;
+                                                                                    }
+                                                                                </style>
+                                                                                <form th:action="@{/site/shoppingCart/update}" method="post" id= "updateCart">
+                                                                                
+                                                                                
+                                                                                <input type="number" step="1" max="10" min="1"
+                                                                                    name="quantity" onblur="this.form.submit();"
+                                                                                    class="quantity-field input-group form-control"
+                                                                                    th:value="${cartItem.quantity}">
+                                                                                    <input type="hidden" name="productId" th:value="${cartItem.product.productId}">
+                                                                                
+                                                                                <span class="input-group-btn-vertical">
+
+                                                                                    <!-- <input type="button" value="+" 
+                                                                                        class="button-plus btn btn-touchspin js-touchspin bootstrap-touchspin-up"
+                                                                                        data-field="quantity">
+                                                                                    <input type="button" value="-"
+                                                                                        class="button-minus btn btn-touchspin js-touchspin bootstrap-touchspin-down"
+                                                                                        data-field="quantity"> -->
+                                                                                </span>
+                                                                            </form>
+                                                                            </div>
+
+                                                                        </div>
+                                                                        
+                                                                        <div class="col-md-6 col price">
+                                                                            <div class="label">Tiền:</div>
+                                                                            <div class="product-price total"
+                                                                                
+                                                                                >
+                                                                                <span th:text="${#numbers.formatDecimal(cartItem.price * cartItem.quantity, 3, 'POINT',2,'COMMA')}">
+
+                                                                                </span> đ
+                                                                            </div> 
+                                                                        </div>
+                                                                        <div
+                                                                            class="col-md-2 col text-xs-right align-self-end">
+                                                                            <div class="cart-line-product-actions ">
+                                                                                <a class="remove-from-cart"
+                                                                                    rel="nofollow"
+                                                                                    th:href="@{'/site/shoppingCart/delete/' + ${cartItem.product.productId}}"
+                                                                                    data-link-action="delete-from-cart"
+                                                                                    data-id-product="1">
+                                                                                    <i class="fa fa-trash-o"
+                                                                                        aria-hidden="true"></i>
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div th:if="${totalCartItems != 0}">
+                                                <a th:href="@{/site/products}"
+                                                    class="continue btn btn-primary pull-xs-right">
+                                                    Tiếp tục mua hàng
+                                                </a>
+                                                <a th:href="@{/site/shoppingCart/checkout}"
+                                                    class="continue btn btn-primary pull-xs-right">
+                                                    Thanh toán
+                                                </a>
+                                            </div>
+                                            <div th:unless="${totalCartItems != 0}">
+                                                <h6 style="max-width: 340px;
+                                            margin: 0 auto;
+                                            color: red;
+                                            background-color: #e3e0da;
+                                            padding: 8px 10px; text-align: center;" class="text-center-success"
+                                                >Không có sản phẩm nào trong giỏ hàng
+                                            </h6>
+                                            <a th:href="@{/site/home}"
+                                                    class="continue btn btn-primary pull-xs-right">
+                                                    Trang chủ
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="cart-grid-right col-xs-12 col-lg-3">
+                                            <div class="cart-summary">
+                                                <div class="cart-detailed-totals">
+                                                    <div class="cart-summary-products">
+                                                        <div class="summary-label">Có [[${totalCartItems}]] sản phẩm trong giỏ hàng của bạn
+                                                        </div>
+                                                    </div>
+                                                    <div class="cart-summary-line" id="cart-subtotal-products">
+                                                        <span class="label js-subtotal">
+                                                            Tổng tiền:
+                                                        </span>
+                                                        <span class="value" 
+                                                        th:text="${#numbers.formatDecimal(totalAmount, 3, 'POINT',2,'COMMA')}">£200.00</span> đ
+                                                    </div>
+                                                    <div class="cart-summary-line" id="cart-subtotal-shipping">
+                                                        <span class="label">
+                                                            Phí vận chuyển:
+                                                        </span>
+                                                        <span class="value">50.000,00 đ</span>
+                                                        <div>
+                                                            <small class="value"></small>
+                                                        </div>
+                                                    </div>
+                                                    <div class="cart-summary-line cart-total">
+                                                        <span class="label">Tổng:</span>
+                                                        <span class="value" 
+                                                        th:text="${#numbers.formatDecimal(totalAmount + 50000, 3, 'POINT',2,'COMMA')}">£200.00</span> đ
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="block-reassurance">
+                                                <ul>
+                                                    <li>
+                                                        <div class="block-reassurance-item">
+                                                            <img src="img/product/check1.png"
+                                                                alt="Security policy (edit with Customer reassurance module)">
+                                                            <span>Chính sách bảo mật (Thông tin cá nhân của bạn sẻ được
+                                                                bảo đảm an toàn)</span>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="block-reassurance-item">
+                                                            <img src="img/product/check2.png"
+                                                                alt="Delivery policy (edit with Customer reassurance module)">
+                                                            <span>Chính sách giao hàng (Thanh toán khi nhận được sản
+                                                                phẩm và kiểm tra)</span>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="block-reassurance-item">
+                                                            <img src="img/product/check3.png"
+                                                                alt="Return policy (edit with Customer reassurance module)">
+                                                            <span>Chính sách hoàn tiền (đảm bảo sự hài lòng của khách
+                                                                hàng)</span>
+                                                        </div>
+
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</body>
+
+</html>

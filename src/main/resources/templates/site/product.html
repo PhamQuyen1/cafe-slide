@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate=~{site/layouts/main-layout.html}>
+
+<head>
+</head>
+
+<body id="home">
+    <div layout:fragment="content">
+        <div id="product-sidebar-left" class="product-grid-sidebar-left">
+            <div class="main-content">
+                <div id="wrapper-site">
+                    <div id="content-wrapper" class="full-width">
+                        <div id="main">
+                            <div class="page-home">
+                                <!-- breadcrumb -->
+                                <nav class="breadcrumb-bg">
+                                    <div class="container no-index">
+                                        <div class="breadcrumb">
+                                            <ol>
+                                                <li>
+                                                    <a th:href="@{/site/home}">
+                                                        <span>Trang chủ</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <span>Sản phẩm</span>
+                                                    </a>
+                                                </li>
+
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </nav>
+
+                                <div class="container" id="product-detail">
+                                    <div class="content">
+                                        <div class="row">
+                                            <div class="sidebar-3 sidebar-collection col-lg-3 col-md-4 col-sm-4">
+
+                                                <!-- category menu -->
+                                                <div class="sidebar-block">
+                                                    <div class="title-block">Danh mục</div>
+                                                    <div class="block-content">
+                                                        <div class="cateTitle hasSubCategory open level1"
+                                                            th:each="category : ${categories}">
+
+
+                                                            <a class="cateItem"
+                                                                th:href="@{'/site/products/category/' + ${category.categoryId}}"
+                                                                th:text="${category.categoryName}"></a>
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="sidebar-block">
+                                                    <div class="title-block">
+                                                        Bán nhiều nhất
+                                                    </div>
+                                                    <div class="product-content tab-content">
+                                                        <div class="row">
+                                                            <div class="item col-md-12"
+                                                                th:each="productsBestSeller : ${listProductsBestSeller}">
+                                                                <div
+                                                                    class="product-miniature item-one first-item d-flex">
+                                                                    <div class="thumbnail-container border">
+                                                                        <a th:href="@{'/site/products/productDetail/' + ${productsBestSeller.productId}}">
+                                                                            <img class="img-fluid image-cover"
+                                                                                th:src="@{${productsBestSeller.imageUrl}}"
+                                                                                alt="img">
+                                                                            <img class="img-fluid image-secondary"
+                                                                                th:src="@{${productsBestSeller.imageUrl}}"
+                                                                                alt="img">
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="product-description">
+                                                                        <div class="product-groups">
+                                                                            <div class="product-title ">
+                                                                                <a th:href="@{'/site/products/productDetail/' + ${productsBestSeller.productId}}"
+                                                                                    style="color: #625620 !important;font-size: 15px;font-weight: 500;"
+                                                                                    th:text="${productsBestSeller.productName}">Đồng
+                                                                                    hồ</a>
+                                                                            </div>
+
+                                                                            <div class="rating">
+                                                                                &nbsp
+                                                                                <span class="price"
+                                                                                    th:if="${productsBestSeller.unitPrice > productsBestSeller.price}">
+                                                                                    <p><del
+                                                                                            
+                                                                                            th:text="${#numbers.formatDecimal(productsBestSeller.unitPrice, 3, 'POINT',2,'COMMA')}"></del>
+                                                                                     đ</p>
+                                                                                </span>
+                                                                                <span class="price"
+                                                                                    th:unless="${productsBestSeller.unitPrice > productsBestSeller.price}"
+
+                                                                                    th:text="${'&nbsp'}"></span>
+
+                                                                            </div>
+                                                                            <div class="product-group-price">
+                                                                                <div class="product-price-and-shipping">
+                                                                                    <span class="price"
+                                                                                        
+                                                                                        th:text="${#numbers.formatDecimal(productsBestSeller.price, 3, 'POINT',2,'COMMA')}">1.000.000
+                                                                                         </span> đ
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                            <div class="col-sm-8 col-lg-9 col-md-8 product-container">
+                                                <h1>Tất cả sản phẩm</h1>
+                                                <div class="js-product-list-top firt nav-top">
+                                                    <div class="d-flex justify-content-around row">
+                                                        <div class="col col-xs-12">
+                                                            <ul class="nav nav-tabs">
+                                                                <li>
+                                                                    <a href="#grid" data-toggle="tab"
+                                                                        class="active show fa fa-th-large"></a>
+                                                                </li>
+                                                                <!-- <li>
+                                                                    <a href="#list" data-toggle="tab" class="fa fa-list-ul"></a>
+                                                                </li> -->
+                                                            </ul>
+                                                            <div class="hidden-sm-down total-products">
+                                                                <p>Có [[${totalItems}]] sản phẩm tất cả</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col col-xs-12">
+                                                            <div
+                                                                class="d-flex sort-by-row justify-content-lg-end justify-content-md-end">
+
+                                                                <div class="products-sort-order dropdown">
+                                                                    
+                                                                    <div class="dropdown show">
+                                                                        <a th:text="${sortBy != null ? sortBy : 'Sắp xếp'}" class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                          
+                                                                        </a>
+                                                                      
+                                                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                                          <a class="dropdown-item" th:href="@{'/site/products/page/1'} 
+                                                                          + '?sortField=productName&sortDir=asc' +${keyword != null ? '&keyword='+keyword : ''}">Tên, từ A đến Z</a>
+                                                                          <a class="dropdown-item" th:href="@{'/site/products/page/1'} 
+                                                                          + '?sortField=productName&sortDir=desc' +${keyword != null ? '&keyword='+keyword : ''}">Tên, từ Z đến A</a>
+                                                                          <a class="dropdown-item" th:href="@{'/site/products/page/1'} 
+                                                                          + '?sortField=unitPrice&sortDir=asc' +${keyword != null ? '&keyword='+keyword : ''}">Giá, từ thấp đến cao</a>
+                                                                          <a class="dropdown-item" th:href="@{'/site/products/page/1'} 
+                                                                          + '?sortField=unitPrice&sortDir=desc' +${keyword != null ? '&keyword='+keyword : ''}">Giá, từ cao đến thấp</a>
+                                                                        </div>
+                                                                      </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-content product-items">
+                                                    <div id="grid" class="related tab-pane fade in active show">
+                                                        <div class="row">
+                                                            <div class="item text-center col-md-4"
+                                                                th:each="product : ${listProducts}">
+                                                                <div
+                                                                    class="product-miniature js-product-miniature item-one first-item">
+                                                                    <div class="thumbnail-container border">
+                                                                        <a th:href="@{'/site/products/productDetail/' + ${product.productId}}">
+                                                                            <img class="img-fluid image-cover"
+                                                                                th:src="@{${product.imageUrl}}"
+                                                                                alt="img">
+                                                                            <img class="img-fluid image-secondary"
+                                                                                th:src="@{${product.imageUrl}}"
+                                                                                alt="img">
+                                                                        </a>
+                                                                        <div class="highlighted-informations">
+                                                                            <!-- <div class="variant-links">
+                                                                                <a href="#" class="color beige" title="Beige"></a>
+                                                                                <a href="#" class="color orange" title="Orange"></a>
+                                                                                <a href="#" class="color green" title="Green"></a>
+                                                                            </div> -->
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="product-description">
+                                                                        <div class="product-groups">
+                                                                            <div class="product-title">
+                                                                                <a th:href="@{'/site/products/productDetail/' + ${product.productId}}"
+                                                                                    style="color: black !important;font-size: 15px;font-weight: 500;"
+                                                                                    th:text="${product.productName}">Đồng
+                                                                                    hồ
+                                                                                    treo tường</a>
+                                                                            </div>
+                                                                            <div class="rating">
+                                                                                &nbsp
+                                                                                <span class="price"
+                                                                                    th:if="${product.unitPrice > product.price}">
+                                                                                    <p><del
+                                                                                        th:text="${#numbers.formatDecimal(product.unitPrice, 3, 'POINT',2,'COMMA')}"></del>
+                                                                                     đ</p>
+                                                                                </span>
+                                                                                <span class="price"
+                                                                                    th:unless="${product.unitPrice > product.price}"
+                                                                                    th:text="${'&nbsp'}"></span>
+                                                                            </div>
+                                                                            <div class="product-group-price">
+                                                                                <div class="product-price-and-shipping">
+                                                                                    <span class="price" 
+                                                                                    th:text="${#numbers.formatDecimal(product.price, 3, 'POINT',2,'COMMA')}">£28.08</span> đ
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div
+                                                                            class="product-buttons d-flex justify-content-center">
+                                                                            <!-- <form action="#" method="post"
+                                                                                class="formAddToCart">
+                                                                                <input type="hidden" name="id_product"
+                                                                                    value="1">
+                                                                                <a class="add-to-cart" href="#"
+                                                                                    data-button-action="add-to-cart">
+                                                                                    <i class="fa fa-shopping-cart"
+                                                                                        aria-hidden="true"></i>
+                                                                                </a>
+                                                                            </form> -->
+                                                                            <form th:action="@{/site/shoppingCart/addToCart}" method="post" class="formAddToCart" id="my_form">
+                                                                                <input type="hidden" name="quantity" value="1">
+                                                                                <input type="hidden" name="productId" th:value="${product.productId}">
+                                                                                <!-- <a class="add-to-cart" href="#" onclick="document.getElementById('my_form').submit();" 
+                                                                                    data-button-action="add-to-cart">
+                                                                                    <i class="fa fa-shopping-cart"
+                                                                                        aria-hidden="true"></i>
+                                                                                </a> -->
+                                                                                
+                                                                                
+                                                                                <button type="submit" class="add-to-cart"><i class="fa fa-shopping-cart"
+                                                                                    aria-hidden="true"></i></button>
+                                                                            </form>
+                                                                            <a th:href="@{'/site/products/productDetail/' + ${product.productId}}"
+                                                                                class="quick-view hidden-sm-down"
+                                                                                data-link-action="quickview">
+                                                                                <i class="fa fa-eye"
+                                                                                    aria-hidden="true"></i>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                <!-- pagination -->
+                                                <div class="pagination">
+                                                    <div class="js-product-list-top ">
+                                                        <div class="d-flex justify-content-around row">
+                                                            <div class="showing col col-xs-12">
+                                                                <span>Đang hiển thị [[${currentPage}]] trong
+                                                                    [[${totalPages}]] trang</span>
+                                                            </div>
+                                                            <div class="page-list col col-xs-12">
+                                                                <ul>
+                                                                    <li th:if="${1 < currentPage}">
+                                                                        <a th:if="${1 < currentPage}" class="disabled js-search-link"
+                                                                            th:href="@{'/site/products/page/1'} 
+											                                + '?sortField=' +${sortField} + '&sortDir=' +${sortDir} +${keyword != null ? '&keyword='+keyword : ''}">Đầu</a>
+                                                                    </li>
+                                                                    <li th:if="${1 < currentPage}" style="width: 60px;">
+                                                                        <a th:if="${1 < currentPage}" class="disabled js-search-link"
+                                                                            th:href="@{'/site/products/page/' + ${currentPage - 1}} 
+											                                + '?sortField=' +${sortField} + '&sortDir=' +${sortDir} +${keyword != null ? '&keyword='+keyword : ''}">Trước
+                                                                        </a>
+                                                                    </li>
+                                                                    <li th:each="i : ${#numbers.sequence(1, totalPages)}">
+                                                                        <a th:if="${i != currentPage}" class="disabled js-search-link" style="display: inline-block;"
+                                                                            th:href="@{'/site/products/page/' +${i}} + '?sortField=' +${sortField} + '&sortDir=' +${sortDir} +${keyword != null ? '&keyword='+keyword : ''}">[[${i}]]
+                                                                        </a>
+                                                                        <span th:unless="${i != currentPage}" class="disabled js-search-link">[[${i}]]</span>
+                                                                    </li>
+                                                                    <li th:if="${totalPages >= currentPage + 1}" style="width: 60px;">
+                                                                        <a th:if="${totalPages >= currentPage + 1}" class="disabled js-search-link"
+                                                                            th:href="@{'/site/products/page/' 
+                                                                            + ${currentPage + 1}} + '?sortField=' +${sortField} + '&sortDir=' +${sortDir} +${keyword != null ? '&keyword='+keyword : ''}">Tiếp</a>
+                                                                    </li>
+
+                                                                    <li th:if="${totalPages > currentPage}">
+                                                                        <a th:if="${totalPages > currentPage}" class="disabled js-search-link"
+                                                                            th:href="@{'/site/products/page/' + ${totalPages}} 
+                                                                            + '?sortField=' +${sortField} + '&sortDir=' +${sortDir} +${keyword != null ? '&keyword='+keyword : ''}">Cuối</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- end col-md-9-1 -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+
+<!-- index06:45-->
+
+</html>

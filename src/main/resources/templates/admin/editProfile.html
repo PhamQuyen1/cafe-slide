@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate=~{admin/main-layout.html}>
+
+<head>
+</head>
+
+<body>
+	<div layout:fragment="content">
+		<div class="main-container">
+			<div class="pd-ltr-20 xs-pd-20-10">
+				<div class="page-header">
+					<div class="row">
+						<div class="col-md-6 col-sm-12">
+							<div class="title">
+								<h4>Thông tin cá nhân</h4>
+							</div>
+							<nav aria-label="breadcrumb" role="navigation">
+								<ol class="breadcrumb">
+									<li class="breadcrumb-item"><a th:href="@{/admin/home}">Trang chủ </a></li>
+									<li class="breadcrumb-item active" aria-current="page">Thông tin cá nhân</li>
+								</ol>
+							</nav>
+						</div>
+
+					</div>
+				</div>
+
+				<div class="card-box mb-30 p-5" style="min-height: 500px;">
+					<div class="container mt-5 d-flex justify-content-center">
+						<div class="row">
+							<div class="col">
+								<form th:action="@{/admin/profiles/update}" th:object="${userDto}" method="post"
+									class="shadow-lg rounded bg-light p-2" style="width: 700px;">
+									<h4 class="text-center text-primary">Thông tin người dùng</h4>
+
+									<div class="form-group">
+										<label for="name">Họ tên:</label>
+										<input type="text" class="form-control" id="name" th:field="*{fullname}">
+										<input type="hidden" class="form-control"  th:field="*{userId}">
+									</div>
+
+									<div class="form-row">
+										<div class="form-group col">
+											<label for="email">Email</label>
+											<input type="text"class="form-control" id="mail"
+												th:field="*{email}" required="">
+										</div>
+										<div class="form-group col">
+											<label for="phone">Số điện thoại:</label>
+											<input type="text" class="form-control" th:field="*{phone}"
+												id="phone" required="">
+										</div>
+									</div>
+									<div class="form-row">
+										<div class="form-group col">
+
+												<label>Vai trò</label>
+												<div class="col-sm-12 col-md-6">
+													<select readonly class="custom-select col-12" th:field="*{roleName}">
+														<option th:disabled = "disabled" th:selected="*{roleName=='ADMIN'}" value="ADMIN">ADMIN
+														</option>
+														<option th:disabled = "disabled" th:selected="*{roleName=='PRODUCT_MANAGER'}"
+															value="PRODUCT_MANAGER">PRODUCT_MANAGER</option>
+														<option th:disabled = "disabled" th:selected="*{roleName=='CUSTOMER'}" value="CUSTOMER">
+															CUSTOMER</option>
+														<option th:disabled = "disabled" th:selected="*{roleName=='SALE_MANAGER'}"
+															value="SALE_MANAGER">SALE_MANAGER</option>
+														<option th:disabled = "disabled" th:selected="*{roleName=='USER_MANAGER'}"
+															value="USER_MANAGER">USER_MANAGER</option>
+													</select>
+												</div>
+										</div>
+										
+									</div>
+									<div class="form-row">
+										<div class="form-group col">
+												<label>Tình trạng</label>
+												<div class="col-sm-12 col-md-12">
+													<select readonly class="custom-select col-12" th:field="*{status}">
+														<option th:selected="*{status == 1}" th:disabled = "disabled" th:value="1">Hoạt động</option>
+														<option th:selected="*{status == 0}" th:disabled = "disabled" th:value="0">Khóa</option>
+													</select>
+												</div>
+										</div>
+										<div class="form-group col">
+											<label for="email">Ngày sinh</label>
+											<input type="date"class="form-control" id="mail"
+												th:field="*{birthday}" required>
+										</div>
+									</div>
+									
+									<div class="form-group">
+										<label for="inputAddress">Địa chỉ:</label>
+										<input type="text" class="form-control" th:field="*{address}"
+											id="inputAddress" required="">
+									</div>
+									<div class="text-center">
+										<button type="submit" class="btn btn-primary">
+											<h4 class="text-light">Cập nhập</h4>
+										</button>
+									</div>
+								</form>
+							</div>
+						</div>
+
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>

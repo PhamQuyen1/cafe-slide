@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate=~{admin/main-layout.html}>
+
+<head>
+
+</head>
+
+<body>
+
+
+	<div layout:fragment="content">
+		
+		<div class="main-container">
+			<div class="pd-ltr-20 xs-pd-20-10">
+				<div class="page-header">
+					<div class="row">
+						<div class="col-md-6 col-sm-12">
+							<div class="title">
+								<h4>Quản lý danh mục</h4>
+							</div>
+							<nav aria-label="breadcrumb" role="navigation">
+								<ol class="breadcrumb">
+									<li class="breadcrumb-item"><a th:href="@{/admin/home}">Trang chủ </a></li>
+									<li class="breadcrumb-item active" aria-current="page">Quản lý danh mục</li>
+								</ol>
+							</nav>
+						</div>
+
+					</div>
+				</div>
+
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-6 col-md-8">
+							<a th:href="@{/admin/categories/add}" type="button"
+								class="btn btn-outline-primary btn-lg m-2 mb-4">Thêm
+								danh mục sản phẩm</a>
+						</div>
+						<div class="col-sm-6 col-md-4">
+							<div class="form-group row">
+								<div class="col-sm-12 col-md-10">
+									<form th:action="@{/admin/categories/page/1}">
+										<div class="form-inline float-left" style="margin-top: 10px;">
+											<input class="form-control" placeholder="Tìm kiếm" type="hidden"
+												style="width: 60%; display: block;" name="sortField"
+												th:value="${sortField}">
+											<input class="form-control" placeholder="Tìm kiếm" type="hidden"
+												style="width: 60%; display: block;" name="sortDir"
+												th:value="${sortDir}">
+											<input class="form-control" placeholder="Tìm kiếm" name="keyword"
+												type="text" th:value="${keyword != 'null' ? keyword : ' '}"
+												style="width: 60%; display: block;">
+											<button class="form-control btn btn-primary" type="submit">Tìm kiếm</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="card-box mb-30">
+					<div class="pd-20">
+
+						<h4 class="text-blue text-center h3">Danh sách danh mục sản phẩm</h4>
+						<h6 style="max-width: 200px;
+						margin: 0 auto;
+						color: red;
+						background-color: #e3e0da;
+						padding: 8px 10px; text-align: center;" class="text-center-success" th:if="${message}" th:text="${message}">
+						</h6>
+
+
+					</div>
+					<div class="pb-20">
+						<table class=" table stripe hover nowrap" style="max-width: 600px; margin: 0 auto; ">
+							<thead>
+								<tr>
+									<th style="color: blue;">
+										<a th:href="@{'/admin/categories/page/1'}
+												+ '?sortField=categoryId&sortDir=' +${reverseSortDir} +${keyword != null ? '&keyword='+keyword : ' '}">
+											ID
+											<span th:if="${sortField} == 'categoryId'">
+												<i th:if="${sortDir} == 'asc'" class="icon-copy fa fa-arrow-down"
+													aria-hidden="true"></i>
+												<i th:if="${sortDir} == 'desc'" class="icon-copy fa fa-arrow-up"
+													aria-hidden="true"></i>
+											</span>
+											<!-- <i class="icon-copy fa" th:classappend = "${sortField} == 'productId' && ${sortField} == 'asc'? fa-arrow-down : fa-arrow-up" aria-hidden="true"></i> -->
+										</a>
+									</th>
+									<th style="color: blue;">
+										<a th:href="@{'/admin/categories/page/1'}
+												+ '?sortField=categoryName&sortDir=' +${reverseSortDir} +${keyword != null ? '&keyword='+keyword : ' '}">
+											Tên danh mục
+											<span th:if="${sortField} == 'categoryName'">
+												<i th:if="${sortDir} == 'asc'" class="icon-copy fa fa-arrow-down"
+													aria-hidden="true"></i>
+												<i th:if="${sortDir} == 'desc'" class="icon-copy fa fa-arrow-up"
+													aria-hidden="true"></i>
+											</span>
+											<!-- <i class="icon-copy fa" th:classappend = "${sortField} == 'productId' && ${sortField} == 'asc'? fa-arrow-down : fa-arrow-up" aria-hidden="true"></i> -->
+										</a>
+									</th>
+
+
+									<!-- <th class="table-plus datatable-nosort">Số sản phẩm</th> -->
+									<th class="datatable-nosort">Hành động</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="category : ${listCategoriesDto}">
+									<td th:text="${category.categoryId}">25</td>
+									<td th:text="${category.categoryName}">Sagittarius</td>
+
+									<!-- <td th:each="product, state : ${category.products}"><span th:text="${state.size}"></span></td> -->
+
+
+									<td>
+										<div class="dropdown">
+											<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
+												href="#" role="button" data-toggle="dropdown">
+												<i class="dw dw-more"></i>
+											</a>
+											<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+
+												<a class="dropdown-item"
+													th:href="@{'/admin/categories/update/' + ${category.categoryId}}"><i
+														class="dw dw-edit2"></i> Chỉnh sửa</a>
+												<a onclick="return confirm('Bạn muốn xóa danh mục ?');" sec:authorize="hasAnyAuthority('ADMIN')" class="dropdown-item"
+													th:href="@{'/admin/categories/delete/' + ${category.categoryId}}">
+													<i class="dw dw-delete-3"></i>Xóa</a>
+												<!-- Button trigger modal -->
+												<!-- <button sec:authorize="hasAnyAuthority('ADMIN')" type="button" class="dropdown-item" data-toggle="modal"
+													data-target="#exampleModal">
+													<i class="dw dw-delete-3"></i>Xóa
+												</button> -->
+
+												<!-- Modal -->
+												
+											</div>
+										</div>
+									</td>
+								</tr>
+
+							</tbody>
+
+						</table>
+						<div class="ml-2">
+							<div>
+								Trang <strong>[[${currentPage}]]</strong> trong tổng số [[${totalPages}]] trang.
+							</div>
+							<div>
+								Tổng số danh mục: [[${totalItems}]].
+							</div>
+						</div>
+
+						<div>
+							<nav aria-label="..." class="">
+								<ul class="pagination justify-content-center">
+									<li class="page-item ">
+										<a th:if="${1 < currentPage}" class="page-link"
+											th:href="@{'/admin/categories/page/1'} 
+											+ '?sortField=' +${sortField} + '&sortDir=' +${sortDir} +${keyword != null ? '&keyword='+keyword : ''}">Đầu</a>
+										<!-- <span th:unless="${1 < currentPage}" class="page-link">Đầu</span> -->
+									</li>
+									<li class="page-item ">
+										<a th:if="${1 < currentPage}" class="page-link"
+											th:href="@{'/admin/categories/page/' + ${currentPage - 1}} 
+											+ '?sortField=' +${sortField} + '&sortDir=' +${sortDir} +${keyword != null ? '&keyword='+keyword : ''}">Trước
+										</a>
+										<!-- <span th:unless="${1 < currentPage}" class="page-link">Trước</span> -->
+									</li>
+									<li class="page-item" th:each="i : ${#numbers.sequence(1, totalPages)}">
+										<a th:if="${i != currentPage}" class="page-link" style="display: inline-block;"
+											th:href="@{'/admin/categories/page/' +${i}} + '?sortField=' +${sortField} + '&sortDir=' +${sortDir} +${keyword != null ? '&keyword='+keyword : ''}">[[${i}]]
+										</a>
+										<span th:unless="${i != currentPage}" class="page-link">[[${i}]]</span>
+									</li>
+									<li class="page-item ">
+										<a th:if="${totalPages >= currentPage + 1}" class="page-link"
+											th:href="@{'/admin/categories/page/' 
+											+ ${currentPage + 1}} + '?sortField=' +${sortField} + '&sortDir=' +${sortDir} +${keyword != null ? '&keyword='+keyword : ''}">Tiếp</a>
+										<!-- <span th:unless="${totalPages > currentPage + 1}" class="page-link">Tiếp</span> -->
+									</li>
+									<li class="page-item">
+										<a th:if="${totalPages > currentPage}" class="page-link"
+											th:href="@{'/admin/categories/page/' + ${totalPages}} 
+											+ '?sortField=' +${sortField} + '&sortDir=' +${sortDir} +${keyword != null ? '&keyword='+keyword : ''}">Cuối</a>
+										<!-- <span th:unless="${totalPages > currentPage}" class="page-link">Cuối</span> -->
+									</li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- js -->
+
+</body>
+
+</html>

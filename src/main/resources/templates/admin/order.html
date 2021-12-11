@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate=~{admin/main-layout.html}>
+
+<head>
+</head>
+
+<body>
+	<div layout:fragment="content">
+		<div class="main-container">
+			<div class="pd-ltr-20 xs-pd-20-10">
+				<div class="page-header">
+					<div class="row">
+						<div class="col-md-6 col-sm-12">
+							<div class="title">
+								<h4>Quản lý đơn hàng</h4>
+							</div>
+							<nav aria-label="breadcrumb" role="navigation">
+								<ol class="breadcrumb">
+									<li class="breadcrumb-item "><a th:href="@{/admin/home}">Trang chủ</a></li>
+									<li class="breadcrumb-item active" aria-current="page"> Quản lý đơn hàng</li>
+								</ol>
+							</nav>
+						</div>
+
+					</div>
+				</div>
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-6 col-md-8">
+
+						</div>
+						<div class="col-sm-6 col-md-4">
+							<div class="form-group row">
+								<div class="col-sm-12 col-md-10">
+									<form th:action="@{/admin/orders/page/1}">
+										<div class="form-inline float-left" style="margin-top: 10px;">
+											<input class="form-control" placeholder="Tìm kiếm" type="hidden"
+												style="width: 60%; display: block;" name="sortField"
+												th:value="${sortField}">
+											<input class="form-control" placeholder="Tìm kiếm" type="hidden"
+												style="width: 60%; display: block;" name="sortDir"
+												th:value="${sortDir}">
+											<input class="form-control" placeholder="Tìm kiếm" name="keyword"
+												type="text" th:value="${keyword != 'null' ? keyword : ' '}"
+												style="width: 60%; display: block;">
+											<button class="form-control btn btn-primary" type="submit">Tìm kiếm</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card-box mb-30">
+					<div class="pd-20">
+
+						<div class="pd-20">
+
+							<h4 class="text-blue text-center h3">Danh sách đơn hàng</h4>
+							<h6 style="max-width: 200px;
+							margin: 0 auto;
+							color: red;
+							background-color: #e3e0da;
+							padding: 8px 10px; text-align: center;" class="text-center-success" th:if="${message}" th:text="${message}">
+							</h6>
+
+
+						</div>
+					</div>
+					<div class="pb-20">
+						<table class=" table stripe hover nowrap">
+							<thead>
+								<tr>
+									<th style="color: blue;">
+										<a th:href="@{'/admin/orders/page/1'}
+												+ '?sortField=orderDate&sortDir=' +${reverseSortDir} +${keyword != null ? '&keyword='+keyword : ''}">
+											Ngày
+											<span th:if="${sortField} == 'orderDate'">
+												<i th:if="${sortDir} == 'asc'" class="icon-copy fa fa-arrow-down"
+													aria-hidden="true"></i>
+												<i th:if="${sortDir} == 'desc'" class="icon-copy fa fa-arrow-up"
+													aria-hidden="true"></i>
+											</span>
+											<!-- <i class="icon-copy fa" th:classappend = "${sortField} == 'productId' && ${sortField} == 'asc'? fa-arrow-down : fa-arrow-up" aria-hidden="true"></i> -->
+										</a>
+									</th>
+									<th style="color: blue;">
+										<a th:href="@{'/admin/orders/page/1'}
+												+ '?sortField=user.fullname&sortDir=' +${reverseSortDir} +${keyword != null ? '&keyword='+keyword : ''}">
+											Tên khách hàng
+											<span th:if="${sortField} == 'user.fullname'">
+												<i th:if="${sortDir} == 'asc'" class="icon-copy fa fa-arrow-down"
+													aria-hidden="true"></i>
+												<i th:if="${sortDir} == 'desc'" class="icon-copy fa fa-arrow-up"
+													aria-hidden="true"></i>
+											</span>
+											<!-- <i class="icon-copy fa" th:classappend = "${sortField} == 'productId' && ${sortField} == 'asc'? fa-arrow-down : fa-arrow-up" aria-hidden="true"></i> -->
+										</a>
+									</th>
+									<th style="color: blue;">
+										<a th:href="@{'/admin/orders/page/1'}
+												+ '?sortField=orderAddress&sortDir=' +${reverseSortDir} +${keyword != null ? '&keyword='+keyword : ''}">
+											Địa chỉ
+											<span th:if="${sortField} == 'orderAddress'">
+												<i th:if="${sortDir} == 'asc'" class="icon-copy fa fa-arrow-down"
+													aria-hidden="true"></i>
+												<i th:if="${sortDir} == 'desc'" class="icon-copy fa fa-arrow-up"
+													aria-hidden="true"></i>
+											</span>
+											<!-- <i class="icon-copy fa" th:classappend = "${sortField} == 'productId' && ${sortField} == 'asc'? fa-arrow-down : fa-arrow-up" aria-hidden="true"></i> -->
+										</a>
+									</th>
+
+
+
+									<th>Tổng tiền</th>
+									<th style="color: blue;">
+										<a th:href="@{'/admin/orders/page/1'}
+												+ '?sortField=orderStatus&sortDir=' +${reverseSortDir} +${keyword != null ? '&keyword='+keyword : ''}">
+											Tình trạng
+											<span th:if="${sortField} == 'orderStatus'">
+												<i th:if="${sortDir} == 'asc'" class="icon-copy fa fa-arrow-down"
+													aria-hidden="true"></i>
+												<i th:if="${sortDir} == 'desc'" class="icon-copy fa fa-arrow-up"
+													aria-hidden="true"></i>
+											</span>
+											<!-- <i class="icon-copy fa" th:classappend = "${sortField} == 'productId' && ${sortField} == 'asc'? fa-arrow-down : fa-arrow-up" aria-hidden="true"></i> -->
+										</a>
+									</th>
+
+									<th class="datatable-nosort">Hành động</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="order : ${listOrders}">
+									<td class="table-plus" th:text="*{order.orderDate}">Gloria F. Mead</td>
+									<td th:text="*{order.orderUser}">25</td>
+									<td th:text="*{order.orderAddress}">Sagittarius</td>
+									<td ><span th:text="${#numbers.formatDecimal(order.total, 3, 'POINT',2,'COMMA')}"></span> đ</td>
+									<td th:text="*{order.orderStatus}"></td>
+									<td>
+										<div class="dropdown">
+											<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
+												href="#" role="button" data-toggle="dropdown">
+												<i class="dw dw-more"></i>
+											</a>
+											<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+												<a class="dropdown-item"
+													th:href="@{'/admin/orders/orderDetail/' + ${order.orderId}}"><i
+														class="dw dw-eye"></i>
+													Xem</a>
+												<a class="dropdown-item"
+													th:href="@{'/admin/orders/orderDetail/update/'+${order.orderId} + '?status=Đã duyệt'}"><i
+														class="dw dw-edit2"></i> Duyệt</a>
+												<a class="dropdown-item" th:href="@{'/admin/orders/orderDetail/update/'+${order.orderId} + '?status=Không duyệt'}"><i class="dw dw-delete-3"></i> Không
+													duyệt</a>
+											</div>
+										</div>
+									</td>
+								</tr>
+
+							</tbody>
+
+						</table>
+						<div class="ml-2">
+							<div>
+								Trang <strong>[[${currentPage}]]</strong> trong tổng số [[${totalPages}]] trang.
+							</div>
+							<div>
+								Tổng số đơn hàng: [[${totalItems}]].
+							</div>
+						</div>
+
+						<div>
+							<nav aria-label="..." class="">
+								<ul class="pagination justify-content-center">
+									<li class="page-item ">
+										<a th:if="${1 < currentPage}" class="page-link"
+											th:href="@{'/admin/orders/page/1'} 
+											+ '?sortField=' +${sortField} + '&sortDir=' +${sortDir} +${keyword != null ? '&keyword='+keyword : ''}">Đầu</a>
+										<!-- <span th:unless="${1 < currentPage}" class="page-link">Đầu</span> -->
+									</li>
+									<li class="page-item ">
+										<a th:if="${1 < currentPage}" class="page-link"
+											th:href="@{'/admin/orders/page/' + ${currentPage - 1}} 
+											+ '?sortField=' +${sortField} + '&sortDir=' +${sortDir} +${keyword != null ? '&keyword='+keyword : ''}">Trước
+										</a>
+										<!-- <span th:unless="${1 < currentPage}" class="page-link">Trước</span> -->
+									</li>
+									<li class="page-item" th:each="i : ${#numbers.sequence(1, totalPages)}">
+										<a th:if="${i != currentPage}" class="page-link" style="display: inline-block;"
+											th:href="@{'/admin/orders/page/' +${i}} + '?sortField=' +${sortField} + '&sortDir=' +${sortDir} +${keyword != null ? '&keyword='+keyword : ''}">[[${i}]]
+										</a>
+										<span th:unless="${i != currentPage}" class="page-link">[[${i}]]</span>
+									</li>
+									<li class="page-item ">
+										<a th:if="${totalPages >= currentPage + 1}" class="page-link"
+											th:href="@{'/admin/orders/page/' 
+											+ ${currentPage + 1}} + '?sortField=' +${sortField} + '&sortDir=' +${sortDir} +${keyword != null ? '&keyword='+keyword : ''}">Tiếp</a>
+										<!-- <span th:unless="${totalPages > currentPage + 1}" class="page-link">Tiếp</span> -->
+									</li>
+									<li class="page-item">
+										<a th:if="${totalPages > currentPage}" class="page-link"
+											th:href="@{'/admin/orders/page/' + ${totalPages}} 
+											+ '?sortField=' +${sortField} + '&sortDir=' +${sortDir} +${keyword != null ? '&keyword='+keyword : ''}">Cuối</a>
+										<!-- <span th:unless="${totalPages > currentPage}" class="page-link">Cuối</span> -->
+									</li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
+</body>
+</body>
+
+</html>

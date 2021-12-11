@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+	<!-- Basic Page Info -->
+	<meta charset="utf-8">
+	<title>Furnitica-Admin Dashboard</title>
+
+	<!-- Site favicon -->
+	<link rel="apple-touch-icon" sizes="180x180" th:href="@{/admin/vendors/images/apple-touch-icon.png}">
+	<link rel="icon" type="image/png" sizes="32x32" th:href="@{/admin/vendors/images/favicon-32x32.png}">
+	<link rel="icon" type="image/png" sizes="16x16" th:href="@{/admin/vendors/images/favicon-16x16.png}">
+
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<!-- Google Font -->
+	<link th:href="@{https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap}" rel="stylesheet">
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" th:href="@{/admin/vendors/styles/core.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/admin/vendors/styles/icon-font.min.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/admin/src/plugins/datatables/css/dataTables.bootstrap4.min.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/admin/src/plugins/datatables/css/responsive.bootstrap4.min.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/admin/vendors/styles/style.css}">
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async th:src="@{https://www.googletagmanager.com/gtag/js?id=UA-119386393-1}"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-119386393-1');
+	</script>
+</head>
+<body>
+	
+
+	<div class="header">
+		<div class="header-left">
+			<div class="menu-icon dw dw-menu"></div>
+			<div class="search-toggle-icon dw dw-search2" data-toggle="header_search"></div>
+			<div class="header-search">
+			</div>
+		</div>
+		<div class="header-right">
+			
+			
+			<div class="user-info-dropdown">
+				<div class="dropdown">
+					<a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+						<span class="user-icon">
+							<img th:src="@{/admin/vendors/images/admin-img.png}" alt="">
+						</span>
+						<span class="user-name">[[${#request.userPrincipal.principal.fullname}]]</span>
+						<span class="user-name" sec:authentication="principal.authorities"></span>
+					</a>
+					<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+						<a class="dropdown-item " th:href="@{/admin/profiles}"><i class="dw dw-user1"></i>Thông tin cá nhân</a>
+						<a class="dropdown-item " th:href="@{/admin/profiles/updatePassword}"><i class="icon-copy fi-key"></i>Thay đổi mật khẩu</a>
+						<a class="dropdown-item logoutLink" href=""><i class="dw dw-logout"></i> Đăng xuất</a>
+						<!-- <a href="" class="dropdown-toggle  no-arrow">
+							<span class="micon"><i class="dw dw-logout" aria-hidden="true"></i></span><span class="mtext">Đăng xuất</span>
+						</a> -->
+						<form th:action="@{/logout}" method="post" name = "logoutForm" th:hidden= "true">
+							<input class="micon mtext" type="submit" value="Đăng xuất">
+						</form>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+
+	
+
+	<div class="left-side-bar">
+		<div class="brand-logo">
+			<a th:href="@{/admin/home}">
+				<!-- <img src="vendors/images/deskapp-logo.svg" alt="" class="dark-logo"> -->
+				<img th:src="@{/admin/vendors/images/logo-mobie.png}" alt="" class="light-logo">
+			</a>
+			<div class="close-sidebar" data-toggle="left-sidebar-close">
+				<i class="ion-close-round"></i>
+			</div>
+		</div>
+		<div class="menu-block customscroll">
+			<div class="sidebar-menu">
+				<ul id="accordion-menu">
+					<li >
+						<a th:href="@{/admin/home}" class="dropdown-toggle  no-arrow">
+							<span class="micon dw dw-house-1"></span><span class="mtext">Trang chủ</span>
+						</a>
+						
+					</li>
+                    <li sec:authorize="hasAnyAuthority('ORDER_MANAGER', 'ADMIN')">
+						<a th:href="@{/admin/orders}" class="dropdown-toggle  no-arrow">
+							<span class="micon"><i class="icon-copy fa fa-minus" aria-hidden="true"></i></span><span class="mtext">Quản lý đơn hàng</span>
+						</a>
+						
+					</li>
+                    <li sec:authorize="hasAnyAuthority('PRODUCT_MANAGER','SALE_MANAGER', 'ADMIN')">
+						<a th:href="@{/admin/products}" class="dropdown-toggle  no-arrow">
+							<span class="micon"><i class="icon-copy fa fa-minus" aria-hidden="true"></i></span><span class="mtext">Quản lý sản phẩm</span>
+						</a>
+						
+					</li>
+                    <li sec:authorize="hasAnyAuthority('PRODUCT_MANAGER', 'ADMIN')">
+						<a th:href="@{/admin/categories}" class="dropdown-toggle  no-arrow">
+							<span class="micon"><i class="icon-copy fa fa-minus" aria-hidden="true"></i></span><span class="mtext">Quản lý danh mục</span>
+						</a>
+						
+					</li>
+					<li sec:authorize="hasAnyAuthority('USER_MANAGER', 'ADMIN')">
+						<a th:href="@{/admin/users}" class="dropdown-toggle  no-arrow">
+							<span class="micon"><i class="icon-copy fa fa-minus" aria-hidden="true"></i></span><span class="mtext">Quản lý người dùng</span>
+						</a>
+						
+					</li>
+                    <li sec:authorize="hasAnyAuthority('SALE_MANAGER', 'ADMIN')">
+						<a th:href="@{/admin/discounts}" class="dropdown-toggle  no-arrow">
+							<span class="micon"><i class="icon-copy fa fa-minus" aria-hidden="true"></i></span><span class="mtext">Quản lý khuyến mãi</span>
+						</a>
+						
+					</li>
+					<li sec:authorize="hasAnyAuthority('USER_MANAGER', 'ADMIN')">
+						<a th:href="@{/admin/feedbacks}" class="dropdown-toggle  no-arrow">
+							<span class="micon"><i class="icon-copy fa fa-minus" aria-hidden="true"></i></span><span class="mtext">Quản lý phản hồi</span>
+						</a>
+						
+					</li>
+					<li >
+						<a href="" class="dropdown-toggle logoutLink no-arrow">
+							<span class="micon"><i class="dw dw-logout" aria-hidden="true"></i></span><span class="mtext">Đăng xuất</span>
+						</a>
+						<!-- <form th:action="@{/logout}" method="post" name = "logoutForm" th:hidden= "true">
+							<input class="micon mtext" type="submit" value="Đăng xuất">
+						</form> -->
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	<div class="mobile-menu-overlay"></div>
+
+	<div layout:fragment="content">
+        
+    </div>
+	<!-- js -->
+	<script th:src="@{/admin/vendors/scripts/core.js}"></script>
+	<script th:src="@{/admin/vendors/scripts/script.min.js}"></script>
+	<script th:src="@{/admin/vendors/scripts/process.js}"></script>
+	<script th:src="@{/admin/vendors/scripts/layout-settings.js}"></script>
+	<script th:src="@{/admin/src/plugins/apexcharts/apexcharts.min.js}"></script>
+	<script th:src="@{/admin/src/plugins/datatables/js/jquery.dataTables.min.js}"></script>
+	<script th:src="@{/admin/src/plugins/datatables/js/dataTables.bootstrap4.min.js}"></script>
+	<script th:src="@{/admin/src/plugins/datatables/js/dataTables.responsive.min.js}"></script>
+	<script th:src="@{/admin/src/plugins/datatables/js/responsive.bootstrap4.min.js}"></script>
+	<script th:src="@{/admin/vendors/scripts/dashboard.js}"></script>
+	<script th:src="@{/admin/src/plugins/datatables/js/dataTables.buttons.min.js}"></script>
+	<script th:src="@{/admin/src/plugins/datatables/js/buttons.bootstrap4.min.js}"></script>
+	<script th:src="@{/admin/src/plugins/datatables/js/buttons.print.min.js}"></script>
+	<script th:src="@{/admin/src/plugins/datatables/js/buttons.html5.min.js}"></script>
+	<script th:src="@{/admin/src/plugins/datatables/js/buttons.flash.min.js}"></script>
+	<script th:src="@{/admin/src/plugins/datatables/js/pdfmake.min.js}"></script>
+	<script th:src="@{/admin/src/plugins/datatables/js/vfs_fonts.js}"></script>
+	<!-- Datatable Setting js -->
+	<script th:src="@{/admin/vendors/scripts/datatable-setting.js}"></script>
+	<script>
+		var loadFile = function (event) {
+			var image = document.getElementById('thumnail');
+			image.src = URL.createObjectURL(event.target.files[0]);
+		};
+		function showPreviewOne(event){
+      if(event.target.files.length > 0){
+        let src = URL.createObjectURL(event.target.files[0]);
+        let preview = document.getElementById("thumnail");
+        preview.src = src;
+        preview.style.display = "block";
+      } 
+    }
+	jQuery(document).ready(function(){
+		$(".logoutLink").on("click", function(e){
+			e.preventDefault();
+			document.logoutForm.submit();
+		});
+	});
+	</script>
+</body>
+</html>

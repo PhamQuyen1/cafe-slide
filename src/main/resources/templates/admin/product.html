@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate=~{admin/main-layout.html}>
+
+<head>
+
+</head>
+<body>
+	<div layout:fragment="content">
+		<div class="main-container">
+			<div class="pd-ltr-20 xs-pd-20-10">
+				<div class="page-header">
+					<div class="row">
+						<div class="col-md-6 col-sm-12">
+							<div class="title">
+								<h4>Quản lý sản phẩm</h4>
+							</div>
+							<nav aria-label="breadcrumb" role="navigation">
+								<ol class="breadcrumb">
+									<li class="breadcrumb-item"><a th:href="@{/admin/home}">Trang chủ </a></li>
+									<li class="breadcrumb-item active" aria-current="page"> Quản lý sản phẩm</li>
+								</ol>
+							</nav>
+						</div>
+
+					</div>
+				</div>
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-6 col-md-8">
+							<a sec:authorize="hasAnyAuthority('PRODUCT_MANAGER', 'ADMIN')" 
+								th:href="@{/admin/products/add}" type="button"
+								class="btn btn-outline-primary btn-lg m-2 mb-4">Thêm sản phẩm</a>
+						</div>
+						<div class="col-sm-6 col-md-4">
+							<div class="form-group row">
+								<div class="col-sm-12 col-md-10">
+									<form th:action="@{/admin/products/page/1}">
+										<div class="form-inline float-left" style="margin-top: 10px;">
+											<input class="form-control" placeholder="Tìm kiếm" type="hidden"
+												style="width: 60%; display: block;" name="sortField"
+												th:value="${sortField}">
+											<input class="form-control" placeholder="Tìm kiếm" type="hidden"
+												style="width: 60%; display: block;" name="sortDir"
+												th:value="${sortDir}">
+											<input class="form-control" placeholder="Tìm kiếm" name="keyword"
+												type="text" th:value="${keyword != 'null' ? keyword : ' '}"
+												style="width: 60%; display: block;">
+											<button class="form-control btn btn-primary" type="submit">Tìm kiếm</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card-box mb-30">
+					<div class="pd-20" style="display: block;text-align: center;">
+						<h3 class="text-blue h4 justify-content-center">Danh sách sản phẩm</h3>
+					</div>
+					<div class="pb-20">
+						<table class=" table stripe hover nowrap">
+							<thead>
+								<tr>
+									<th style="color: blue;">
+										<a th:href="@{'/admin/products/page/1'}
+												+ '?sortField=productId&sortDir=' +${reverseSortDir} +${keyword != null ? '&keyword='+keyword : ''}">
+											ID
+											<span th:if="${sortField} == 'productId'">
+												<i th:if="${sortDir} == 'asc'" class="icon-copy fa fa-arrow-down"
+													aria-hidden="true"></i>
+												<i th:if="${sortDir} == 'desc'" class="icon-copy fa fa-arrow-up"
+													aria-hidden="true"></i>
+											</span>
+											<!-- <i class="icon-copy fa" th:classappend = "${sortField} == 'productId' && ${sortField} == 'asc'? fa-arrow-down : fa-arrow-up" aria-hidden="true"></i> -->										
+										</a>
+									</th>
+									<th>Sản phẩm</th>
+									<th style="color: blue;">
+										<a th:href="@{'/admin/products/page/1'}
+											+ '?sortField=productName&sortDir=' +${reverseSortDir} +${keyword != null ? '&keyword='+keyword : ''}">
+											Tên sản phẩm
+											<span th:if="${sortField} == 'productName'">
+												<i th:if="${sortDir} == 'asc'" class="icon-copy fa fa-arrow-down"
+													aria-hidden="true"></i>
+												<i th:if="${sortDir} == 'desc'" class="icon-copy fa fa-arrow-up"
+													aria-hidden="true"></i>
+											</span>
+										</a>
+									</th>
+									<th>Kích thước</th>
+									<th style="color: blue;">
+										<a th:href="@{'/admin/products/page/1'}
+											+ '?sortField=enteredDate&sortDir=' +${reverseSortDir} +${keyword != null ? '&keyword='+keyword : ''}">
+											Ngày nhập
+											<span th:if="${sortField} == 'enteredDate'">
+												<i th:if="${sortDir} == 'asc'" class="icon-copy fa fa-arrow-down"
+													aria-hidden="true"></i>
+												<i th:if="${sortDir} == 'desc'" class="icon-copy fa fa-arrow-up"
+													aria-hidden="true"></i>
+											</span>
+										</a>
+									</th>
+									<th style="color: blue;">
+										<a th:href="@{'/admin/products/page/1'}
+											+ '?sortField=quantity&sortDir=' +${reverseSortDir} +${keyword != null ? '&keyword='+keyword : ''}">
+											Tồn kho
+											<span th:if="${sortField} == 'quantity'">
+												<i th:if="${sortDir} == 'asc'" class="icon-copy fa fa-arrow-down"
+													aria-hidden="true"></i>
+												<i th:if="${sortDir} == 'desc'" class="icon-copy fa fa-arrow-up"
+													aria-hidden="true"></i>
+											</span>
+										</a>
+									</th>
+									<th style="color: blue;">
+										<a th:href="@{'/admin/products/page/1'}
+											+ '?sortField=unitPrice&sortDir=' +${reverseSortDir} +${keyword != null ? '&keyword='+keyword : ''}">
+											Giá bán
+											<span th:if="${sortField} == 'unitPrice'">
+												<i th:if="${sortDir} == 'asc'" class="icon-copy fa fa-arrow-down"
+													aria-hidden="true"></i>
+												<i th:if="${sortDir} == 'desc'" class="icon-copy fa fa-arrow-up"
+													aria-hidden="true"></i>
+											</span>
+
+										</a>
+
+									</th>
+									<th class="datatable-nosort">Hành động</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="product : ${listProductsDto}">
+									<td th:text="${product.productId}">25</td>
+									<td class="table-plus"><img th:src="@{${product.imageUrl}}" width="70"
+											height="70" alt="">
+									</td>
+									<td th:text="${product.productName}">25</td>
+									<td th:text="${product.size}">Sagittarius</td>
+									<!-- <td th:text="${product.enteredDate}">29-03-2018</td> -->
+									<td th:text="${#dates.format(product.enteredDate, 'yyyy-MM-dd')}" class="text-center">29-03-2018</td>
+									<td th:text="${product.quantity}">29-03-2018</td>
+									<td ><span th:text="${#numbers.formatDecimal(product.unitPrice, 3, 'POINT',2,'COMMA')}"></span> đ</td>
+									<td>
+										<div class="dropdown">
+											<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
+												href="#" role="button" data-toggle="dropdown">
+												<i class="dw dw-more"></i>
+											</a>
+											<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+												<a sec:authorize="hasAnyAuthority('SALE_MANAGER', 'ADMIN')"
+													class="dropdown-item"
+													th:href="@{'/admin/discounts/add/' +${product.productId}}"><i
+														class="icon-copy fa fa-plus" aria-hidden="true"></i>Thêm khuyến
+													mãi
+												</a>
+												<a sec:authorize="hasAnyAuthority('PRODUCT_MANAGER', 'ADMIN')" class="dropdown-item"
+													th:href="@{'/admin/products/update/' +${product.productId}}"><i
+														class="dw dw-edit2"></i> Chỉnh sửa</a>
+												<a onclick="return confirm('Bạn muốn xóa sản phẩm ?');" sec:authorize="hasAnyAuthority('ADMIN')"
+													class="dropdown-item"
+													th:href="@{'/admin/products/delete/' +${product.productId}}"><i
+														class="dw dw-delete-3"></i>Xóa
+												</a>
+											</div>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="ml-2">
+							<div>
+								Trang <strong>[[${currentPage}]]</strong> trong tổng số [[${totalPages}]] trang.
+							</div>
+							<div>
+								Tổng số sản phẩm: [[${totalItems}]].
+							</div>
+						</div>
+						<div>
+							<nav aria-label="..." class="">
+								<ul class="pagination justify-content-center">
+									<li class="page-item ">
+										<a th:if="${1 < currentPage}" class="page-link"
+											th:href="@{'/admin/products/page/1'} 
+											+ '?sortField=' +${sortField} + '&sortDir=' +${sortDir} +${keyword != null ? '&keyword='+keyword : ''}">Đầu</a>
+										<!-- <span th:unless="${1 < currentPage}" class="page-link">Đầu</span> -->
+									</li>
+									<li class="page-item ">
+										<a th:if="${1 < currentPage}" class="page-link"
+											th:href="@{'/admin/products/page/' + ${currentPage - 1}} 
+											+ '?sortField=' +${sortField} + '&sortDir=' +${sortDir} +${keyword != null ? '&keyword='+keyword : ''}">Trước
+										</a>
+										<!-- <span th:unless="${1 < currentPage}" class="page-link">Trước</span> -->
+									</li>
+									<li class="page-item" th:each="i : ${#numbers.sequence(1, totalPages)}">
+										<a th:if="${i != currentPage}" class="page-link" style="display: inline-block;"
+											th:href="@{'/admin/products/page/' +${i}} + '?sortField=' +${sortField} + '&sortDir=' +${sortDir} +${keyword != null ? '&keyword='+keyword : ''}">[[${i}]]
+										</a>
+										<span th:unless="${i != currentPage}" class="page-link">[[${i}]]</span>
+									</li>
+									<li class="page-item ">
+										<a th:if="${totalPages >= currentPage + 1}" class="page-link"
+											th:href="@{'/admin/products/page/' 
+											+ ${currentPage + 1}} + '?sortField=' +${sortField} + '&sortDir=' +${sortDir} +${keyword != null ? '&keyword='+keyword : ''}">Tiếp</a>
+										<!-- <span th:unless="${totalPages > currentPage + 1}" class="page-link">Tiếp</span> -->
+									</li>
+									<li class="page-item">
+										<a th:if="${totalPages > currentPage}" class="page-link"
+											th:href="@{'/admin/products/page/' + ${totalPages}} 
+											+ '?sortField=' +${sortField} + '&sortDir=' +${sortDir} +${keyword != null ? '&keyword='+keyword : ''}">Cuối</a>
+										<!-- <span th:unless="${totalPages > currentPage}" class="page-link">Cuối</span> -->
+									</li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- js -->
+</body>
+
+</html>
