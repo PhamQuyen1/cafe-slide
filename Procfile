@@ -1,1 +1,1 @@
-web: java -jar build/libs/rate-0.0.1-SNAPSHOT.jar
+web: java -war target/InfinityBank-1.0.war
