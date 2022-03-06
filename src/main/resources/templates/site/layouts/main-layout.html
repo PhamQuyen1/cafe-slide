@@ -176,7 +176,7 @@
                             </div>
                             <div id="acount" class="collapse">
                                 <div class="account-list-content">
-                                    
+
                                     <div th:if="${userDto == null}">
                                         <a class="login" th:href="@{/login}" rel="nofollow"
                                             title="Log in to your customer account">
@@ -192,15 +192,16 @@
                                         </a>
                                     </div>
                                     <div th:unless="${userDto == null}">
-                                        
+
                                         <!-- <a class="login" th:href="@{/login}" rel="nofollow"
                                             title="Log in to your customer account">
                                             <i class="fa fa-sign-in"></i>
                                             <span>Đăng xuất</span>
 
                                         </a> -->
-                                        <a class="login logoutLink" href=""><i class="fa fa-sign-out"></i><span>Đăng xuất</span></a>
-                                        <form th:action="@{/logout}" method="post" name = "logoutForm" th:hidden= "true">
+                                        <a class="login logoutLink" href=""><i class="fa fa-sign-out"></i><span>Đăng
+                                                xuất</span></a>
+                                        <form th:action="@{/logout}" method="post" name="logoutForm" th:hidden="true">
                                             <input class="micon mtext" type="submit" value="Đăng xuất">
                                         </form>
                                     </div>
@@ -222,30 +223,36 @@
                                             <tbody>
                                                 <tr th:each="cartItem: ${cartItems}">
                                                     <td class="product-image">
-                                                        <a th:href="@{'/site/products/productDetail/' + ${cartItem.product.productId}}">
+                                                        <a
+                                                            th:href="@{'/site/products/productDetail/' + ${cartItem.product.productId}}">
                                                             <img th:src="@{${cartItem.product.imageUrl}}" alt="Product">
                                                         </a>
                                                     </td>
                                                     <td>
                                                         <div class="product-name">
-                                                            <a th:href="@{'/site/products/productDetail/' + ${cartItem.product.productId}}" th:text="${cartItem.product.productName}">Đồng hồ treo tường</a>
+                                                            <a th:href="@{'/site/products/productDetail/' + ${cartItem.product.productId}}"
+                                                                th:text="${cartItem.product.productName}">Đồng hồ treo
+                                                                tường</a>
                                                         </div>
                                                         <div>
                                                             <span th:text="${cartItem.quantity}"></span> x
-                                                            <span class="product-price" 
-                                                            th:text="${#numbers.formatDecimal(cartItem.price, 3, 'POINT',2,'COMMA')}">£28.98</span> đ
+                                                            <span class="product-price"
+                                                                th:text="${#numbers.formatDecimal(cartItem.price, 3, 'POINT',2,'COMMA')}">£28.98</span>
+                                                            đ
                                                         </div>
                                                     </td>
                                                     <td class="action">
-                                                        <a class="remove" th:href="@{'/site/shoppingCart/delete/' + ${cartItem.product.productId}}">
+                                                        <a class="remove"
+                                                            th:href="@{'/site/shoppingCart/delete/' + ${cartItem.product.productId}}">
                                                             <i class="fa fa-trash-o" aria-hidden="true"></i>
                                                         </a>
                                                     </td>
                                                 </tr>
                                                 <tr class="total">
                                                     <td colspan="2">Tổng tiền:</td>
-                                                    <td 
-                                                    ><span th:text="${#numbers.formatDecimal(totalAmount + 50000, 3, 'POINT',2,'COMMA')}"></span> đ</td>
+                                                    <td><span
+                                                            th:text="${#numbers.formatDecimal(totalAmount + 50000, 3, 'POINT',2,'COMMA')}"></span>
+                                                        đ</td>
                                                 </tr>
 
                                                 <tr>
@@ -253,7 +260,8 @@
                                                         <div class="cart-button">
                                                             <a th:href="@{/site/shoppingCart}" title="View Cart">Xem Giỏ
                                                                 hàng</a>
-                                                            <a th:href="@{/site/shoppingCart/checkout}" title="Checkout">Thanh
+                                                            <a th:href="@{/site/shoppingCart/checkout}"
+                                                                title="Checkout">Thanh
                                                                 toán</a>
                                                         </div>
                                                     </td>
@@ -283,8 +291,8 @@
                                     <p class="logo-footer">
                                         <img th:src="@{/site/img/home/c19.png}" alt="img">
                                     </p>
-                                    <p class="content-logo">Furnitica xác định luôn trung thành với những giá trị
-                                        cốt lõi của mình để luôn là sự chọn số một của người tiêu dùng
+                                    <p class="content-logo">Cafe Slide xác định luôn trung thành với những giá trị
+                                        cốt lõi của mình để luôn là sự chọn số một của khách hàng
                                     </p>
                                 </div>
                             </div>
@@ -501,18 +509,18 @@
 
         $('.input-group').on('click', '.button-plus', function (e) {
             incrementValue(e);
-            
+
         });
 
         $('.input-group').on('click', '.button-minus', function (e) {
             decrementValue(e);
         });
-        jQuery(document).ready(function(){
-		$(".logoutLink").on("click", function(e){
-			e.preventDefault();
-			document.logoutForm.submit();
-		});
-	});
+        jQuery(document).ready(function () {
+            $(".logoutLink").on("click", function (e) {
+                e.preventDefault();
+                document.logoutForm.submit();
+            });
+        });
     </script>
 </body>
 

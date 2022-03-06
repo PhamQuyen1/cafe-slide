@@ -1,103 +1,116 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
-layout:decorate=~{site/layouts/main-layout.html}>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate=~{site/layouts/main-layout.html}>
 
 <head>
-		
-	</head>
-	
-	<body id="about-us" class="blog" >
-		
-		
-		<!-- main content -->
-		<div class="main-content" layout:fragment="content">
-			<div id="wrapper-site">
-				<div id="content-wrapper">
-					
-					<!-- breadcrumb -->
-					<nav class="breadcrumb-bg">
-						<div class="container no-index">
-							<div class="breadcrumb">
-								<ol>
-									<li>
-										<a th:href="@{/site/home}">
-											<span>Trang chủ</span>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<span>Giới thiệu</span>
-										</a>
-									</li>
-								</ol>
-							</div>
+
+</head>
+
+<body id="about-us" class="blog">
+
+
+	<!-- main content -->
+	<div class="main-content" layout:fragment="content">
+		<div id="wrapper-site">
+			<div id="content-wrapper">
+
+				<!-- breadcrumb -->
+				<nav class="breadcrumb-bg">
+					<div class="container no-index">
+						<div class="breadcrumb">
+							<ol>
+								<li>
+									<a th:href="@{/site/home}">
+										<span>Trang chủ</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span>Giới thiệu</span>
+									</a>
+								</li>
+							</ol>
 						</div>
-					</nav>
-					<div id="main">
-						<div class="page-home">
-							<div class="container">
-								<div class="about-us-content">
-									
-									<h1 class="title-page">Giới thiệu về chúng tôi</h1>
-									<div class="row">
-										<div class="col-lg-6 col-md-6 col-sm-6 right">
-											<a href="#">
-												<img class="img-fluid" src="img/other/1.jpg" alt="#" />
-											</a>
+					</div>
+				</nav>
+				<div id="main">
+					<div class="page-home">
+						<div class="container">
+							<div class="about-us-content">
+
+								<h1 class="title-page">Giới thiệu về chúng tôi</h1>
+								<div class="row">
+									<div class="col-lg-6 col-md-6 col-sm-6 right">
+										<a href="#">
+											<img class="img-fluid" src="img/other/1.jpg" alt="#" />
+										</a>
+									</div>
+									<div class="col-lg-6 col-md-6 col-sm-6 left">
+										<div class="cms-block f-right">
+											<h3 id="a" class="page-subheading">Chúng tôi là ai ?</h3>
+											<p>Cafe Slide được sinh ra từ niềm đam mê bất tận với hạt cà phê Việt
+												Nam. Qua một chặng đường dài, chúng tôi đã không ngừng mang đến những
+												sản
+												phẩm cà phê thơm ngon, sánh đượm trong không gian thoải mái và lịch sự
+												với
+												mức giá hợp lý.</p>
+											<p>Những ly cà phê của chúng tôi không chỉ đơn thuần là thức
+												uống quen thuộc mà còn mang trên mình một sứ mệnh văn hóa phản ánh một
+												phần
+												nếp sống hiện đại của người Việt Nam.</p>
+
+
 										</div>
-										<div class="col-lg-6 col-md-6 col-sm-6 left">
-											<div class="cms-block f-right">
-												<h3 id= "a"class="page-subheading">Chúng tôi là ai ?</h3>
-												<p>Furnitica là website giới thiệu sản phẩm dịch vụ cung cấp thông tin sản phẩm nội thất phong phú nhất Việt Nam 
-													với nhiều mặt hàng Nội thất & phụ kiện trang trí, một thành viên của Công ty Cổ phần Sunvina Việt Nam</p>
-												<p>Furnitica đặt muc tiêu trở thành hệ thống bán lẻ số 1 Việt Nam trong lĩnh vực nội thất, 
-													phụ kiện trang trí và thiết bị xây dựng, tiến đến vươn ra thị trường khu vực và thế giới.</p>
-												<!-- <a>
-													<img class="img-fluid" src="img/other/4.png" alt="#" />
-													<span>Mr. kwang shang - CEO</span>
-												</a> -->
-											</div>
+									</div>
+									<div class="col-lg-6 col-md-6 col-sm-6 right" id="a">
+										<div class="cms-block f-left">
+											<h3 class="page-subheading">Sứ mệnh</h3>
+											<p>Cafe Slide mang tới sự hài lòng với mọi đối tượng khách hàng, từ những từ
+												những tầng lớp bình dân nhất.
+												Từ đó chúng tôi sẽ từng bước xây dựng văn hóa tiêu dùng tiện lợi văn
+												mình cho người Việt Nam.</p>
+											<p>Với sứ mệnh trở thành thương hiệu cà phê Việt Nam dẫn đầu, Cafe Slide
+												luôn tìm kiếm những ứng cử viên tiềm năng có chung niềm đam mê và nỗ lực
+												cùng chúng tôi vươn tới thành công.
+												Chúng tôi luôn chào đón các bạn gia nhập vào đội ngũ chuyên nghiệp của
+												gia đình Cafe Slide.</p>
+
 										</div>
-										<div class="col-lg-6 col-md-6 col-sm-6 right" id="a">
-											<div class="cms-block f-left">
-												<h3 class="page-subheading">Sứ mệnh</h3>
-												<p>Furnitica mang tới sự hài lòng với mọi đối tượng khách hàng, từ những từ những tầng lớp bình dân nhất, ít quan tâm tới công nghệ. 
-													Từ đó chúng tôi sẽ từng bước xây dựng văn hóa tiêu dùng tiện lợi văn mình cho người Việt Nam.</p>
-												<p>Furnitica cũng tạo cơ hội cho các Nhà sản xuất nội địa có sản phẩm chất lượng mở rộng thị trường, có một môi trường phát triển lành mạnh, hiệu quả. Cũng trên hệ thống này, Chúng tôi mang đến cho người tiêu dùng những sản phẩm, dịch vụ chất lượng cao, 
-													thúc đẩy sự phát triển của lĩnh vực thương mại điện tử và ngành bán lẻ Nội thất, xây dựng tại Việt Nam..</p>
-											</div>
-										</div>
-										<div class="col-lg-6 col-md-6 col-sm-6 left">
-											<a href="#">
-												<img class="img-fluid" src="img/other/2.jpg" alt="#" />
-											</a>
-										</div>
-										<div class="col-lg-6 col-md-6 col-sm-6 right">
-											<a href="#">
-												<img class="img-fluid" src="img/other/3.jpg" alt="#" />
-											</a>
-										</div>
-										<div class="col-lg-6 col-md-6 col-sm-6 left">
-											<div class="cms-block f-right">
-												<h3 class="page-subheading no-before">Giá trị cốt lõi</h3>
-												<!-- <div class="testimonials owl-carousel owl-theme owl-loaded owl-drag">
+									</div>
+									<div class="col-lg-6 col-md-6 col-sm-6 left">
+										<a href="#">
+											<img class="img-fluid" src="img/other/2.jpg" alt="#" />
+										</a>
+									</div>
+									<div class="col-lg-6 col-md-6 col-sm-6 right">
+										<a href="#">
+											<img class="img-fluid" src="img/other/3.jpg" alt="#" />
+										</a>
+									</div>
+									<div class="col-lg-6 col-md-6 col-sm-6 left">
+										<div class="cms-block f-right">
+											<h3 class="page-subheading no-before">Giá trị cốt lõi</h3>
+											<!-- <div class="testimonials owl-carousel owl-theme owl-loaded owl-drag">
 													
 													
 												</div> -->
-												<div class="item">
-														
-													<p>Furnitica xác định luôn trung thành với những giá trị cốt lõi của mình để 
-														luôn là sự chọn số một của người tiêu dùng. Hệ thống bao gồm:
-													</p>
-													<ul >
-														<li>1. Chất lượng dịch vụ phải tốt nhất</li>
-														<li>2. Sản phẩm phong phú, thiết kế đa dạng, chất liệu độc đáo luôn hợp xu hướng</li>
-														<li>3. Thanh toán an toàn, tiện lợi tiết kiệm thời gian</li>
-														<li>4. Giao hàng nhanh chóng, đúng hẹn</li>
-														<li>5. Chăm sóc khách hàng 24/7</li>
-													</ul>
-												</div>
-												<!-- <div class="social-content">
+											<div class="item">
+
+												<p>Chúng tôi mong muốn mang đến cho bạn những trải nghiệm đáng nhớ mỗi
+													lần đến Cafe Slide. Hãy chia sẻ với chúng tôi để chúng tôi có
+													thể mang đến cho bạn những trải nghiệm tuyệt vời hơn thế. Hệ thống
+													bao gồm:
+												</p>
+												<ul>
+													<li>1. Chất lượng dịch vụ phải tốt nhất</li>
+													<li>2. Sản phẩm phong phú, ngon miệng độc đáo luôn
+														hợp xu hướng</li>
+													<li>3. Thanh toán an toàn, tiện lợi tiết kiệm thời gian</li>
+													<li>4. Giao hàng nhanh chóng, đúng hẹn</li>
+													<li>5. Chăm sóc khách hàng 24/7</li>
+												</ul>
+											</div>
+											<!-- <div class="social-content">
 													<div class="social">
 														<ul class="list-inline mb-0 justify-content-end">
 															<li class="list-inline-item mb-0">
@@ -123,7 +136,6 @@ layout:decorate=~{site/layouts/main-layout.html}>
 														</ul>
 													</div>
 												</div> -->
-											</div>
 										</div>
 									</div>
 								</div>
@@ -133,10 +145,12 @@ layout:decorate=~{site/layouts/main-layout.html}>
 				</div>
 			</div>
 		</div>
-		<!-- footer -->
-		
-    </body>
-    
-    
-    <!-- index06:45-->
-</html>														
+	</div>
+	<!-- footer -->
+
+</body>
+
+
+<!-- index06:45-->
+
+</html>

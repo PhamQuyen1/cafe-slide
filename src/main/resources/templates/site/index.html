@@ -8,23 +8,23 @@
 <body>
 
     <div layout:fragment="content">
-        
+
         <div class="main-content" id="home4">
             <div class="wrap-banner">
                 <div class="section banner">
                     <div class="tiva-slideshow-wrapper">
                         <div id="tiva-slideshow" class="nivoSlider">
                             <a href="#">
-                                <img class="img-responsive" th:src="@{/site/img/home/slider-4.jpg}"
-                                    title="#caption1" alt="Slideshow image">
+                                <img class="img-responsive" th:src="@{/site/img/home/slider-4.jpg}" title="#caption1"
+                                    alt="Slideshow image">
                             </a>
                             <a href="#">
-                                <img class="img-responsive" th:src="@{/site/img/home/slider-5.jpg}"
-                                    title="#caption2" alt="Slideshow image">
+                                <img class="img-responsive" th:src="@{/site/img/home/slider-5.jpg}" title="#caption2"
+                                    alt="Slideshow image">
                             </a>
                             <a href="#">
-                                <img class="img-responsive" th:src="@{/site/img/home/slider-6.jpg}"
-                                    title="#caption3" alt="Slideshow image">
+                                <img class="img-responsive" th:src="@{/site/img/home/slider-6.jpg}" title="#caption3"
+                                    alt="Slideshow image">
                             </a>
                         </div>
                     </div>
@@ -583,9 +583,9 @@
                     <div class="wrap-banner">
                         <!-- menu category -->
                         <div class="container position">
-                            
+
                         </div>
-                       
+
                     </div>
 
                     <div class="container">
@@ -593,7 +593,7 @@
                         <div class="row">
                             <div class="policy-home col-lg-12">
                                 <div class="row">
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -602,12 +602,12 @@
 
                 <!-- main -->
 
-                    <div id="wrapper-site">
-                        <div id="content-wrapper" class="full-width">
-                            <div id="main">
-                                <section class="page-home">
-                                    <!-- FEATURED CATEGORIES -->
-                                    <!-- <div class="featured-category">
+                <div id="wrapper-site">
+                    <div id="content-wrapper" class="full-width">
+                        <div id="main">
+                            <section class="page-home">
+                                <!-- FEATURED CATEGORIES -->
+                                <!-- <div class="featured-category">
                                         <div class="container">
                                             <div class="tab-content text-center">
                                                 <div class="title-product">
@@ -717,163 +717,192 @@
                                             </div>
                                         </div>
                                     </div> -->
-    
-                                    <!-- banner -->
-    
-                                    <div class="section spacing-10 group-image-special">
-                                        <div class="row">
-                                            
-                                            <div class="col-lg-6 col-md-6 banner1">
-                                                <div class="effect">
-                                                    <a href="#">
-                                                        <img class="img-fluid width-100" th:src="@{/site/img/home/Blog3.jpg}"
-                                                            alt="banner-2" title="banner-2">
-                                                    </a>
-                                                </div>
+
+                                <!-- banner -->
+
+                                <div class="section spacing-10 group-image-special">
+                                    <div class="row">
+
+                                        <div class="col-lg-6 col-md-6 banner1">
+                                            <div class="effect">
+                                                <a href="#">
+                                                    <img class="img-fluid width-100"
+                                                        th:src="@{/site/img/home/Blog3.jpg}" alt="banner-2"
+                                                        title="banner-2">
+                                                </a>
                                             </div>
-                                            <div class="col-lg-6 col-md-6 banner1">
-                                                <div class="effect">
-                                                    <a href="#">
-                                                        <img class="img-fluid width-100" th:src="@{/site/img/home/Blog9.jpg}"
-                                                            alt="banner-2" title="banner-2">
-                                                    </a>
-                                                </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 banner1">
+                                            <div class="effect">
+                                                <a href="#">
+                                                    <img class="img-fluid width-100"
+                                                        th:src="@{/site/img/home/Blog9.jpg}" alt="banner-2"
+                                                        title="banner-2">
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
-                                    <!--FEATURED PRODUCTS -->
-                                    
-                                    
-                                    <div class="featured-product">
-                                        <div class="container">
-                                            <div class="title-tab-content  text-center">
-                                                <div class="title-product justify-content-between">
-                                                    <h2>SẢN PHẨM Khuyến mãi</h2>
-                                                    <p>Đây là những sản phẩm khuyến mãi mới nhất của chúng tôi</p>
-                                                </div>
+                                </div>
+                                <!--FEATURED PRODUCTS -->
+
+
+                                <div class="featured-product">
+                                    <div class="container">
+                                        <div class="title-tab-content  text-center">
+                                            <div class="title-product justify-content-between">
+                                                <h2>SẢN PHẨM Khuyến mãi</h2>
+                                                <p>Đây là những sản phẩm khuyến mãi mới nhất của chúng tôi</p>
                                             </div>
-                                            <div class="tab-content">
-                                                <div class="item text-center col-20" th:each="product : ${listProductDiscount}">
-                                                    <div class="product-miniature js-product-miniature item-one first-item">
-                                                        <div class="thumbnail-container">
-                                                            <a th:href="@{'/site/products/productDetail/' + ${product.productId}}">
-                                                                <img class="img-fluid image-cover"
-                                                                    th:src="@{${product.imageUrl}}" alt="img">
-                                                                <img class="img-fluid image-secondary"
-                                                                    th:src="@{${product.imageUrl}}" alt="img">
-                                                            </a>
-                                                            <!-- <div class="highlighted-informations">
+                                        </div>
+                                        <div class="tab-content">
+                                            <div class="item text-center col-20"
+                                                th:each="product : ${listProductDiscount}">
+                                                <div class="product-miniature js-product-miniature item-one first-item">
+                                                    <div class="thumbnail-container">
+                                                        <a
+                                                            th:href="@{'/site/products/productDetail/' + ${product.productId}}">
+                                                            <img class="img-fluid image-cover"
+                                                                th:src="@{${product.imageUrl}}" alt="img">
+                                                            <img class="img-fluid image-secondary"
+                                                                th:src="@{${product.imageUrl}}" alt="img">
+                                                        </a>
+                                                        <!-- <div class="highlighted-informations">
                                                                 <div class="variant-links">
                                                                     <a href="#" class="color beige" title="Beige"></a>
                                                                     <a href="#" class="color orange" title="Orange"></a>
                                                                     <a href="#" class="color green" title="Green"></a>
                                                                 </div>
                                                             </div> -->
-                                                        </div>
-                                                        <div class="product-description">
-                                                            <div class="product-groups">
-                                                                <div class="product-title">
-                                                                    <a th:href="@{'/site/products/productDetail/' + ${product.productId}}" th:text="${product.productName}">Đồng hồ</a>
-                                                                </div>
-                                                                <div class="rating">
-                                                                    &nbsp
-                                                                    <div class="product-price-and-shipping">
-                                                                        <span class="price" th:if="${product.unitPrice > product.price}"><p><del th:text="${#numbers.formatDecimal(product.unitPrice, 3, 'POINT',2,'COMMA')}"> </del> đ</p></span>
-                                                                        <span class="price" th:unless="${product.unitPrice > product.price}" th:text="${'&nbsp'}"></span>
-                                                                    </div>
-                                                                    
-                                                                </div>
-                                                                <div class="product-group-price">
-                                                                    <div class="product-price-and-shipping">
-                                                                        <span class="price" th:text="${#numbers.formatDecimal(product.price, 3, 'POINT',2,'COMMA')}" ></span> đ
-                                                                    </div>
-                                                                </div>
-                                                                <!-- ${#numbers.formatCurrency(product.price)} -->
+                                                    </div>
+                                                    <div class="product-description">
+                                                        <div class="product-groups">
+                                                            <div class="product-title">
+                                                                <a th:href="@{'/site/products/productDetail/' + ${product.productId}}"
+                                                                    th:text="${product.productName}">Đồng hồ</a>
                                                             </div>
-                                                            <div class="product-buttons d-flex justify-content-center">
-                                                                <form th:action="@{/site/shoppingCart/addToCart}" method="post" class="formAddToCart" id="my_form">
-                                                                    <input type="hidden" name="quantity" value="1">
-                                                                    <input type="hidden" name="productId" th:value="${product.productId}">
-                                                                    <!-- <a class="add-to-cart" href="#" onclick="document.getElementById('my_form').submit();" 
+                                                            <div class="rating">
+                                                                &nbsp
+                                                                <div class="product-price-and-shipping">
+                                                                    <span class="price"
+                                                                        th:if="${product.unitPrice > product.price}">
+                                                                        <p><del
+                                                                                th:text="${#numbers.formatDecimal(product.unitPrice, 3, 'POINT',2,'COMMA')}">
+                                                                            </del> đ</p>
+                                                                    </span>
+                                                                    <span class="price"
+                                                                        th:unless="${product.unitPrice > product.price}"
+                                                                        th:text="${'&nbsp'}"></span>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="product-group-price">
+                                                                <div class="product-price-and-shipping">
+                                                                    <span class="price"
+                                                                        th:text="${#numbers.formatDecimal(product.price, 3, 'POINT',2,'COMMA')}"></span>
+                                                                    đ
+                                                                </div>
+                                                            </div>
+                                                            <!-- ${#numbers.formatCurrency(product.price)} -->
+                                                        </div>
+                                                        <div class="product-buttons d-flex justify-content-center">
+                                                            <form th:action="@{/site/shoppingCart/addToCart}"
+                                                                method="post" class="formAddToCart" id="my_form">
+                                                                <input type="hidden" name="quantity" value="1">
+                                                                <input type="hidden" name="productId"
+                                                                    th:value="${product.productId}">
+                                                                <!-- <a class="add-to-cart" href="#" onclick="document.getElementById('my_form').submit();" 
                                                                         data-button-action="add-to-cart">
                                                                         <i class="fa fa-shopping-cart"
                                                                             aria-hidden="true"></i>
                                                                     </a> -->
-                                                                    
-                                                                    
-                                                                    <button type="submit" class="add-to-cart"><i class="fa fa-shopping-cart"
+
+
+                                                                <button type="submit" class="add-to-cart"><i
+                                                                        class="fa fa-shopping-cart"
                                                                         aria-hidden="true"></i></button>
-                                                                </form>
-                                                                <!-- <a class="addToWishlist" href="#" data-rel="1" onclick="">
+                                                            </form>
+                                                            <!-- <a class="addToWishlist" href="#" data-rel="1" onclick="">
                                                                     <i class="fa fa-heart" aria-hidden="true"></i>
                                                                 </a> -->
-                                                                <a th:href="@{'/site/products/productDetail/' + ${product.productId}}" class="quick-view hidden-sm-down"
-                                                                    data-link-action="quickview">
-                                                                    <i class="fa fa-eye" aria-hidden="true"></i>
-                                                                </a>
-                                                            </div>
+                                                            <a th:href="@{'/site/products/productDetail/' + ${product.productId}}"
+                                                                class="quick-view hidden-sm-down"
+                                                                data-link-action="quickview">
+                                                                <i class="fa fa-eye" aria-hidden="true"></i>
+                                                            </a>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                
                                             </div>
-                                           
-                                            <!-- <div class="content-showmore text-center has-showmore">
+
+                                        </div>
+
+                                        <!-- <div class="content-showmore text-center has-showmore">
                                                 
                                                 <a class="btn btn-default novShowMore" href="./product-grid-sidebar-right.html"><span>Tất cả sản phẩm khuyến mãi</span></a>
                                                 
                                                 <input type="hidden" value="0" class="count_showmore">
                                             </div> -->
-                                        </div>
                                     </div>
-                                    
-                                    <div class="featured-product">
-                                        <!-- <hr> -->
-                                        <div class="container">
-                                            <div class="title-tab-content  text-center">
-                                                <div class="title-product justify-content-between">
-                                                    <h2>SẢN PHẨM MỚI NHẤT</h2>
-                                                    <p>Đây là những sản phẩm mới nhất của chúng tôi</p>
-                                                </div>
+                                </div>
+
+                                <div class="featured-product">
+                                    <!-- <hr> -->
+                                    <div class="container">
+                                        <div class="title-tab-content  text-center">
+                                            <div class="title-product justify-content-between">
+                                                <h2>SẢN PHẨM MỚI NHẤT</h2>
+                                                <p>Đây là những sản phẩm mới nhất của chúng tôi</p>
                                             </div>
-                                            <div class="tab-content">
-                                                <div class="item text-center col-20" th:each="product : ${listProduct}">
-                                                    <div class="product-miniature js-product-miniature item-one first-item">
-                                                        <div class="thumbnail-container">
-                                                            <a th:href="@{'/site/products/productDetail/' + ${product.productId}}">
-                                                                <img class="img-fluid image-cover"
-                                                                    th:src="@{${product.imageUrl}}" alt="img">
-                                                                <img class="img-fluid image-secondary"
-                                                                    th:src="@{${product.imageUrl}}" alt="img">
-                                                            </a>
-                                                            <!-- <div class="highlighted-informations">
+                                        </div>
+                                        <div class="tab-content">
+                                            <div class="item text-center col-20" th:each="product : ${listProduct}">
+                                                <div class="product-miniature js-product-miniature item-one first-item">
+                                                    <div class="thumbnail-container">
+                                                        <a
+                                                            th:href="@{'/site/products/productDetail/' + ${product.productId}}">
+                                                            <img class="img-fluid image-cover"
+                                                                th:src="@{${product.imageUrl}}" alt="img">
+                                                            <img class="img-fluid image-secondary"
+                                                                th:src="@{${product.imageUrl}}" alt="img">
+                                                        </a>
+                                                        <!-- <div class="highlighted-informations">
                                                                 <div class="variant-links">
                                                                     <a href="#" class="color beige" title="Beige"></a>
                                                                     <a href="#" class="color orange" title="Orange"></a>
                                                                     <a href="#" class="color green" title="Green"></a>
                                                                 </div>
                                                             </div> -->
-                                                        </div>
-                                                        <div class="product-description">
-                                                            <div class="product-groups">
-                                                                <div class="product-title text-success">
-                                                                    <a th:href="@{'/site/products/productDetail/' + ${product.productId}}" th:text="${product.productName}">Đồng hồ</a>
-                                                                </div>
-                                                                <div class="rating">
-                                                                    &nbsp
-                                                                    <div class="product-price-and-shipping">
-                                                                        <span class="price" th:if="${product.unitPrice > product.price}"><p><del th:text="${#numbers.formatDecimal(product.unitPrice, 3, 'POINT',2,'COMMA')}"></del> đ</p></span>
-                                                                        <span class="price" th:unless="${product.unitPrice > product.price}" th:text="${'&nbsp'}"></span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="product-group-price">
-                                                                    <div class="product-price-and-shipping">
-                                                                        <span class="price" th:text="${#numbers.formatDecimal(product.price, 3, 'POINT',2,'COMMA')}" >Â£28.08</span> đ
-                                                                    </div>
+                                                    </div>
+                                                    <div class="product-description">
+                                                        <div class="product-groups">
+                                                            <div class="product-title text-success">
+                                                                <a th:href="@{'/site/products/productDetail/' + ${product.productId}}"
+                                                                    th:text="${product.productName}">Đồng hồ</a>
+                                                            </div>
+                                                            <div class="rating">
+                                                                &nbsp
+                                                                <div class="product-price-and-shipping">
+                                                                    <span class="price"
+                                                                        th:if="${product.unitPrice > product.price}">
+                                                                        <p><del
+                                                                                th:text="${#numbers.formatDecimal(product.unitPrice, 3, 'POINT',2,'COMMA')}"></del>
+                                                                            đ</p>
+                                                                    </span>
+                                                                    <span class="price"
+                                                                        th:unless="${product.unitPrice > product.price}"
+                                                                        th:text="${'&nbsp'}"></span>
                                                                 </div>
                                                             </div>
-                                                            <div class="product-buttons d-flex justify-content-center">
-                                                                <!-- <form action="#" method="post" class="formAddToCart">
+                                                            <div class="product-group-price">
+                                                                <div class="product-price-and-shipping">
+                                                                    <span class="price"
+                                                                        th:text="${#numbers.formatDecimal(product.price, 3, 'POINT',2,'COMMA')}">Â£28.08</span>
+                                                                    đ
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="product-buttons d-flex justify-content-center">
+                                                            <!-- <form action="#" method="post" class="formAddToCart">
                                                                     <input type="hidden" name="id_product" value="1">
                                                                     <a class="add-to-cart" href="#"
                                                                         data-button-action="add-to-cart">
@@ -881,49 +910,47 @@
                                                                             aria-hidden="true"></i>
                                                                     </a>
                                                                 </form> -->
-                                                                <form th:action="@{/site/shoppingCart/addToCart}" method="post" class="formAddToCart" id="my_form">
-                                                                    <input type="hidden" name="quantity" value="1">
-                                                                    <input type="hidden" name="productId" th:value="${product.productId}">
-                                                                    <!-- <a class="add-to-cart" href="#" onclick="document.getElementById('my_form').submit();" 
-                                                                        data-button-action="add-to-cart">
-                                                                        <i class="fa fa-shopping-cart"
-                                                                            aria-hidden="true"></i>
-                                                                    </a> -->
-                                                                    
-                                                                    
-                                                                    <button type="submit" class="add-to-cart"><i class="fa fa-shopping-cart"
+                                                            <form th:action="@{/site/shoppingCart/addToCart}"
+                                                                method="post" class="formAddToCart" id="my_form">
+                                                                <input type="hidden" name="quantity" value="1">
+                                                                <input type="hidden" name="productId"
+                                                                    th:value="${product.productId}">
+
+
+
+                                                                <button type="submit" class="add-to-cart"><i
+                                                                        class="fa fa-shopping-cart"
                                                                         aria-hidden="true"></i></button>
-                                                                </form>
-                                                                <!-- <a class="addToWishlist" href="#" data-rel="1" onclick="">
-                                                                    <i class="fa fa-heart" aria-hidden="true"></i>
-                                                                </a> -->
-                                                                <a th:href="@{'/site/products/productDetail/' + ${product.productId}}" class="quick-view hidden-sm-down"
-                                                                    data-link-action="quickview" >
-                                                                    <i class="fa fa-eye" aria-hidden="true"></i>
-                                                                </a>
-                                                            </div>
+                                                            </form>
+
+                                                            <a th:href="@{'/site/products/productDetail/' + ${product.productId}}"
+                                                                class="quick-view hidden-sm-down"
+                                                                data-link-action="quickview">
+                                                                <i class="fa fa-eye" aria-hidden="true"></i>
+                                                            </a>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                
                                             </div>
-                                           
                                             <div class="content-showmore text-center has-showmore">
-                                                <!-- <button type="button" class="btn btn-default novShowMore" name="novShowMore" data-loading="Loading..." data-loadmore="Load More Products">
-                                                    <span><a href="./product-grid-sidebar-right.html">Tất cả sản phẩm</a></span>
-                                                    <a class="btn btn-default novShowMore" href="./product-grid-sidebar-right.html"><span>Tất cả sản phẩm</span></a>
-                                                </button> -->
-                                                <a class="btn btn-default novShowMore" th:href="@{/site/products}" style="margin-right: 570px;"><span>Tất cả sản phẩm</span></a>
+
+                                                <a class="btn btn-default novShowMore"
+                                                    th:href="@{/site/products}"><span>Tất cả sản phẩm</span></a>
                                                 <input type="hidden" value="0" class="count_showmore">
                                             </div>
+
                                         </div>
+
+
+
                                     </div>
-                                </section>
-                            </div>
+                                </div>
+                            </section>
                         </div>
                     </div>
+                </div>
 
-                
+
             </div>
         </div>
     </div>
